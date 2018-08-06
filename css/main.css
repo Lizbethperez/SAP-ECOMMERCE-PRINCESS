@@ -168,6 +168,46 @@ div ul li a i{
 #template-Product-description, #product1, #product2, #product3{
     margin-left: 5em;
 }
+
+/*FORMATOS LOGIN*/
+.btn{
+background-color: #ab47bc;
+color:white;
+}
+section div form{
+    border:2px solid #ab47bc;
+    border-radius: 5%;
+}
+#format-checkbox{
+    margin-top: -30px;
+    padding:0;
+}
+section div form h6{
+    padding-left: 2em;
+}
+.format-newClient{
+font-size: 21px;
+line-height: 1.2;
+font-family: 'Patrick Hand', cursive;
+}
+
+/*FORMATOS CARRITO DE COMPRAS*/
+.format-title-buys{
+    border-bottom: 4px double #ab47bc;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.format-finish-buy{
+    border:2px solid #ab47bc;
+    border-radius: 5%;
+    margin-bottom: 1em;
+    height:40vh;
+    margin-left: 1em;
+}
+.formt-text-mobiledesktop{
+    font-size: 18px;
+}
+
 /*FORMATOS PARA VERSION MOBILE*/
 @media(max-width:425px){
     h3{
@@ -238,6 +278,7 @@ div ul li a i{
     #first-Image:hover{
         opacity: 1;
     }
+  
     /*FORMATOS SEGUNDA SECCION*/
     section div .format-img1-section2 p{
         color:black;
@@ -286,6 +327,14 @@ div ul li a i{
     }
     #product1>.row, #product2>.row, #product3>.row {
         margin-bottom: 0;
+    }
+    /*FORMATOS CARRITO DE COMPRAS*/
+    .format-title-buys{
+    font-weight: bolder;
+    font-size: 14px;
+    }
+    .formt-text-mobiledesktop{
+        font-size: 10px;
     }
 }
 

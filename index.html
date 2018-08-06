@@ -65,7 +65,7 @@
     </div>
     <section class="container-content">
         <div class="row content-allImages" >
-            <div class="col l3 s3 format-First-Item" id="first-Image"><p class="center">Accesorios de cabello</p></div>
+            <div class="col l3 s3 format-First-Item" id="first-Image"> <p class="center">Accesorios de cabello</p></div>
             <div class="col l3 s3 format-First-second" id="second-Image"><p class="center">Aretes</p></div>
             <div class="col l3 s3 format-First-third" id="third-Image"><p class="center">Collares</p></div>
         </div>
@@ -143,6 +143,139 @@
                     </div>
         </div>
     </section>
+
+<!--SECCION LOGIN-->
+<section>
+    <div class="row">
+        <h4 class="col l10 offset-l1  sl2 offset-s1">Incia Sesion o Crea Una cuenta </h4>
+    </div>
+   </section>
+<!--Seccion Formulario del Login-->
+<section>
+<div class="row">
+    <div class="col l4 offset-l1 s10 offset-s1">
+        <h5>Clientes Nuevos</h4><br><br>
+        <h6 class="format-newClient">¡Crea una cuenta en nuestra tienda! Podrás realizar el proceso de pago más rápido,
+             guardar múltiples direcciones de envío, ver y rastrear tus pedidos y ¡Más</h6><br><br>
+        <div class="row">
+            <a class="col s10 offset-s1 l7 offset-l2 waves-effect btn waves-light modal-trigger" href="#modal1">Crear Cuenta</a>
+        </div>
+    </div>
+    <form class="col l4 offset-l1 s10 offset-s1 ">
+        <div class="row">
+            <h5 class="center">Clientes Registrados</h4><br>
+            <h6>Ya tines Cuenta!! Inicia Sesion con tus Datos</h6>
+            <div class="input-field col s10 l10 offset-l1">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">User Name/Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s10 l10 offset-l1">
+                <i class="material-icons prefix">lock</i>
+                <input id="icon_telephone" type="password" class="validate">
+                <label for="icon_telephone">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <a id="btn-login" class="waves-effect waves-light btn col s5 offset-s3 l4 offset-l4">Inicia Sesion</a>
+        </div>
+        <form action="#">
+            <p id="format-checkbox">
+                <label>
+                    <input type="checkbox" />
+                    <span>Recordarme</span>
+                 </label>
+            </p>
+        </form>
+    </form>
+</div>
+<!--Seccion Modal para el Sing Up-->
+<section>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+           <h4>Bienvenido a Princess</h4>
+           <p>Registrate !!!........es Gratis</p>
+           <div class="row">
+              <div class=" form col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input id="new-email" type="email" class="validate">
+                      <label for="new-email">User Name/Email</label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="new-password" type="password" class="validate">
+                    <label for="new-password">Password</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input id="password" type="password" class="validate">
+                      <label for="password">Confirm Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button id="btn-signUp" class="col s3 offset-s4 btn waves-effect waves-light" type="submit" name="action">Sign Up
+                        <i class="material-icons right">send</i>
+                      </button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+     </div>
+</section>
+</section>
+<!--VISTA PARA COMPRAR PRODUCTOS-->
+<section>
+    <h4>MI COMPRA</h4>
+    <div class="row ">
+        <div class="col l3 offset-l8 format-finish-buy">
+            <div class="row">
+                <h5 class="center">Resumen de Compra</h5>
+            </div> <div class="row">
+                <h6 class"center col l3">Total:</h6>
+                <h6 class="col l2">$200.00</h6>
+            </div>
+            <div class="row">
+               <a class="btn center" href="#">FINALIZAR COMPRA</a><br>
+            </div> 
+        </div>
+    </div>
+    <div class="row format-title-buys">
+        <div class="center col l4 s5">Producto</div>
+        <div class="center col l1 s2"> Precio</div>
+        <div class="center col l1 s2">Cantidad</div>
+        <div class="center col l1 s2">Subtotal</div>
+    </div>
+    <!--TEMPLATE PARA LAS COMPRAS(AGREGAR PRODUCTOS AL CARRITO)-->
+    <div class="row">
+            <div class="center col l4 s5">
+                <div class"row">
+                    <img class="col l2 s4 responsive-img"src="assets/love.png" alt="producto-carrito">
+                    <h6 class="col l5 s1 offset-l1 formt-text-mobiledesktop">Samsung Porta Celular</h6>
+                </div>
+            </div>
+            <div class="center col l1 s2 formt-text-mobiledesktop"> $200.00</div>
+            <div class="center col l1 s2 formt-text-mobiledesktop">1</div>
+            <div class="center col l1 s2 formt-text-mobiledesktop">$200.00</div>
+    </div>
+</section>
     <footer class="page-footer">
         <div class="container">
             <h5 class="center format-text-footer">Follow Us Princess</h5>

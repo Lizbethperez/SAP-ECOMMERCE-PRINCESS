@@ -1,13 +1,3 @@
-$(document).ready(function(){
-    $(".dropdown-trigger").dropdown();
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true,
-        indicators: true,
-      });
-});
-
-//AUTENTIFICACION CON FIREBASE
-/*
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
@@ -59,39 +49,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 } ());
-*/
-/*
-const ajaxPokemon = () => { //Esta funcion Busca en la API de cada uno de los pokemons.
-    $.ajax({
-      url: 'https://api.mercadolibre.com/categories',//Se hace la Busqueda En la Api por cada Pokemon.
-      type: 'GET',
-      datatype: 'json',
-    })
-      .done(function (response) {
-        //console.log(response);
-        
-        const data = (response);
-        console.log(data);
-      })
-      .fail(function () {
-        console.log("error");
-      })
-  }
-*/
-  const getAllInformation=()=>{
-    const articleRequest = new XMLHttpRequest();
-    articleRequest.open('GET', `https://api.mercadolibre.com/items/MLM591686651`);
-    articleRequest.onload = addInformation;
-    articleRequest.onerror = handleError;
-    articleRequest.send();
-  }
-  function addInformation(){
-    console.log(this.responseText);
-    const data = JSON.parse(this.responseText);
-    console.log(data);
-    //console.log(article);
-  }
-  const handleError=() =>{
-    console.log('Se ha presentado un error');
-  }
-  getAllInformation();
+
+
