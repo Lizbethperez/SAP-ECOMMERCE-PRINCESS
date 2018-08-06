@@ -67,6 +67,77 @@ nav i.material-icons {
 .page-footer {
  background-color: #ffddf4;
 }
+.format-text-footer{
+  color:#ab47bc;
+  font-weight: bolder;
+}
+.container{
+    color:#ab47bc;
+}
+#format-row-footer{
+margin-bottom: 5px;
+}
+.format-img-redes{
+    height: 20vh;
+    width: 100%
+    }
+
+/*FORMATOS PARA EL CONTENIDO PRINCIPAL */
+.format-First-Item{
+    background-image: url("../assets/accesoriosCabello.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    opacity: 0.8; 
+}
+.format-First-second{
+    background-image: url("../assets/aretes2.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    opacity: 0.8; 
+}
+.format-First-third{
+    background-image: url("../assets/collares.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    height: 70vh;
+}
+#first-Image, #second-Image, #third-Image{
+   margin-top: 1em;
+   margin-left:6em;
+}
+ section  div p{
+     color:white;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-size: 45px;
+     font-weight: bolder;
+     margin-top:25vh;
+ }
+/*formatos segunda seccion*/
+ .format-img-section2{
+    width: 100%;
+ }
+ .format-img1-section2{
+    background-image: url("../assets/collares2.png");
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    opacity: 0.8;
+ }
+ section div .format-img1-section2 p{
+     color:black;
+     font-size: 45px;
+     margin-left: 20em;
+ }
+ section div .format-img1-section2 a span{
+     color:black;
+      font-size:25px;
+      font-weight: bolder;
+      margin-left: 75px;
+ }
+
 /*FORMATOS BARRA DE NAVEGACION PARA LA VERSION MOBILE*/
 @media(max-width:425px){
     h3{
@@ -98,6 +169,31 @@ nav i.material-icons {
         border-radius: 4%;
         /*border:1px double #af4fe0;*/
         margin: 1px;
+    }
+    .format-First-Item{
+        background-image: url("../assets/accesoriosCabello.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 30vh;
+        opacity: 0.8; 
+    }
+    .format-First-second{
+        background-image: url("../assets/aretes2.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 30vh;
+        opacity: 0.8; 
+    }
+    .format-First-third{
+        background-image: url("../assets/collares2.png");
+        background-size: cover;
+        background-position: center;
+        height: 30vh;
+        opacity: 0.7;
+    }
+    #first-Image, #second-Image, #third-Image{
+       margin-top: 1em;
+       margin-left:2em;
     }
 }
 
