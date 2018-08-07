@@ -23,8 +23,20 @@
                 </div>
              
             </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger col s4">
-                <i class="material-icons">menu</i></a>
+            <ul class="collapsible hide-on-large-only" >
+                <li>
+                    <div class="collapsible-header" id="format-collapsible">
+                        <i class="material-icons">menu</i></div>
+                    <div class="collapsible-body">
+                        <span>WELCOME PRINCESS..</span>
+                        <a href="collapsible.html"><i class="large material-icons">account_circle</i></a>
+                        <a href="badges.html"><i class="large material-icons">shopping_cart</i></a>
+                       
+                    
+                    </div>
+                </li>
+            </ul>
+
             <ul id="nav-mobile" class="col l3 right hide-on-med-and-down">
                 <li><a class="dropdown-trigger formatDropdown" href="#!" data-target="dropdown1">WishList<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="badges.html"><i class="large material-icons">shopping_cart</i></a></li>
@@ -243,18 +255,16 @@
 </section>
 <!--VISTA PARA COMPRAR PRODUCTOS-->
 <section>
-    <h4>MI COMPRA</h4>
+    <h4 class="title-for-mobile">MI COMPRA</h4>
     <div class="row ">
-        <div class="col l3 offset-l8 format-finish-buy">
+        <div class="col l3 offset-l8 s6 offset-s5 format-finish-buy">
+                <h5 class="center col l12 s12 text-size">Resumen de Compra</h5>
+            <div clas="row"></div>
             <div class="row">
-                <h5 class="center">Resumen de Compra</h5>
-            </div> <div class="row">
-                <h6 class"center col l3">Total:</h6>
-                <h6 class="col l2">$200.00</h6>
+                <span class="col l4 offset-l2 text-size" >Total:</span>
+                <span class="center text-size col l4 s6">$200.00</span> 
             </div>
-            <div class="row">
-               <a class="btn center" href="#">FINALIZAR COMPRA</a><br>
-            </div> 
+               <a class="btn center col l7 offset-l3 s6 offset-s3" href="#">FINALIZAR COMPRA</a><br>
         </div>
     </div>
     <div class="row format-title-buys">
@@ -297,10 +307,11 @@
         </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2018 Pricess. Todos los derechos Reservados Text
+                    © 2018 Pricess. Todos los derechos Reservados
                 </div>
             </div>
-    </footer>             
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>           
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
     <script src="js/assets/materialize.min.js"></script>

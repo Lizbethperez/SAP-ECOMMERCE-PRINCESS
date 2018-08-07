@@ -23,6 +23,16 @@ div ul li a i {
 .row{
     margin-bottom:35px;
 }
+#format-collapsible{
+    width: 100%;
+    background-color:transparent;
+}
+.collapsible-body a i.material-icons{
+    color:black;
+}
+.collapsible-body {
+  width: 100%;
+}
 h3{
     margin-top:25px;
     padding-top:10px;
@@ -201,13 +211,28 @@ font-family: 'Patrick Hand', cursive;
     border:2px solid #ab47bc;
     border-radius: 5%;
     margin-bottom: 1em;
-    height:40vh;
+    height:35vh;
     margin-left: 1em;
 }
 .formt-text-mobiledesktop{
     font-size: 18px;
 }
-
+.execute-buy{
+font-size: 15px;
+color:black;
+}
+.text-size{
+    font-size: 28px;
+    text-align: center;
+}
+.title-for-mobile{
+    font-size: 40px;
+    font-weight: bolder;
+    color: #ab47bc;
+    font-family: 'Patrick Hand', cursive;
+    margin-bottom: 1px solid #ab47bc;
+    margin-left: 2em;
+}
 /*FORMATOS PARA VERSION MOBILE*/
 @media(max-width:425px){
     h3{
@@ -336,6 +361,18 @@ font-family: 'Patrick Hand', cursive;
     .formt-text-mobiledesktop{
         font-size: 10px;
     }
+    .title-for-mobile{
+        font-size: 18px;
+    }
+    .text-size{
+        font-size: 18px;
+    }
+    .format-finish-buy{
+        margin-bottom: 0;
+        height:55vh;
+        margin-left: 1em;
+    }
 }
+
 
 
