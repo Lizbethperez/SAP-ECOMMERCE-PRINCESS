@@ -10,88 +10,82 @@ $(document).ready(function(){
 
 //AUTENTIFICACION CON FIREBASE
 //USANDO FIREBASE PARA INICIAR SESION
-/*
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
   });
 
-  (function(){
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCm8xsJEXOZaB6Mho7fFA5iavzUawhIs9A",
-      authDomain: "ecommerce-princess.firebaseapp.com",
-      databaseURL: "https://ecommerce-princess.firebaseio.com",
-      projectId: "ecommerce-princess",
-      storageBucket: "ecommerce-princess.appspot.com",
-      messagingSenderId: "50790994488"
-    };
-  
-    firebase.initializeApp(config);
-    var userEmail=document.getElementById("icon_prefix");
-    var password=document.getElementById("icon_telephone");
-    var btnLogin=document.getElementById("btn-login");
-    var btnSignUp=document.getElementById("btn-signUp");
-    var newEmail=document.getElementById("new-email");
-    var newPassword=document.getElementById("new-password");
-  
-    //Creando un evento para el boton de login
-    btnLogin.addEventListener("click", e => {
-        var userEmailValue=userEmail.value;
-        var passwordValue=password.value;
-        var auth=firebase.auth();
-        var promise=auth.signInWithEmailAndPassword(userEmailValue,passwordValue);
-        promise.catch( e => alert(e.message));
-    });
-    btnSignUp.addEventListener("click", e => {
-      var userEmailValue=newEmail.value;
-      var passwordValue=newPassword.value;
-      var auth=firebase.auth();
-      var promise=auth.createUserWithEmailAndPassword(userEmailValue,passwordValue);
-      promise.catch( e => alert(e.message));
-      });
-  
-      firebase.auth().onAuthStateChanged(firebaseUser =>{
-          if(firebaseUser){
-              console.log("logeado");
-              location.href="index1.html"
-          }else{
-              console.log("not loged in");
-          }
-      });
-  
-  } ());
-  
+    (function(){
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCm8xsJEXOZaB6Mho7fFA5iavzUawhIs9A",
+          authDomain: "ecommerce-princess.firebaseapp.com",
+          databaseURL: "https://ecommerce-princess.firebaseio.com",
+          projectId: "ecommerce-princess",
+          storageBucket: "ecommerce-princess.appspot.com",
+          messagingSenderId: "50790994488"
+        };
+      
+        firebase.initializeApp(config);
+        var userEmail=document.getElementById("icon_prefix");
+        var password=document.getElementById("icon_telephone");
+        var btnLogin=document.getElementById("btn-login");
+        var btnSignUp=document.getElementById("btn-signUp");
+        var newEmail=document.getElementById("new-email");
+        var newPassword=document.getElementById("new-password");
+      
+        //Creando un evento para el boton de login
+        btnLogin.addEventListener("click", e => {
+            var userEmailValue=userEmail.value;
+            var passwordValue=password.value;
+            var auth=firebase.auth();
+            var promise=auth.signInWithEmailAndPassword(userEmailValue,passwordValue);
+            promise.catch( e => alert(e.message));
+        });
+        btnSignUp.addEventListener("click", e => {
+          var userEmailValue=newEmail.value;
+          var passwordValue=newPassword.value;
+          var auth=firebase.auth();
+          var promise=auth.createUserWithEmailAndPassword(userEmailValue,passwordValue);
+          promise.catch( e => alert(e.message));
+          });
+      
+          firebase.auth().onAuthStateChanged(firebaseUser =>{
+              if(firebaseUser){
+                  console.log("logeado");
+                  window.location.hash = '';
+                  //location.href="index1.html"
+              }else{
+                  console.log("not loged in");
+              }
+          });
+      
+      } ());
 
-*/
-/*
-//OBTENIEDO INFORMACION DE API DE MERCADO LIBRE
-  const getAllInformation=()=>{
-    const articleRequest = new XMLHttpRequest();
-    articleRequest.open('GET', `https://api.mercadolibre.com/items/MLM591686651`);
-    articleRequest.onload = addInformation;
-    articleRequest.onerror = handleError;
-    articleRequest.send();
-  }
-  function addInformation(){
-    console.log(this.responseText);
-    const data = JSON.parse(this.responseText);
-    console.log(data);
-    //console.log(article);
-  }
-  const handleError=() =>{
-    console.log('Se ha presentado un error');
-  }
-  getAllInformation();
- */ 
 
 $(document).ready(function () {
+//* MOSTRAR AL DAR CLICK DN USER LOGIN 
+$(document).on('click', '#user-login', function(event){
+    event.preventDefault();
+    
+      //var dressId = $(this).attr('product-id');
+      window.location.hash = 'userLogin/'
+      //$(".show-AllProducts").empty();
+  });
+  
+
 
 /*AL DAR CLICK SE BUSCAN LOS ARETES EN LA API*/
 $(document).on('click', '#second-Image', function(event){
   event.preventDefault();
-  ajaxEarrings();
+  
+    //var dressId = $(this).attr('product-id');
+    window.location.hash = 'allArticles/'
+    //$(".show-AllProducts").empty();
 });
+
+  //ajaxEarrings();
 /*AL DAR CLICK SE BUSCAN LOS COLLARES EN LA API*/
 $(document).on('click', '#third-Image', function(event){
   event.preventDefault();
@@ -106,8 +100,9 @@ $(document).on('click', '#first-Image', function(event){
 $(document).on('click', '.btn-more', function(event){
   event.preventDefault();
   var singleIdProducts=$(this).attr('id-jewelry');
+  window.location.hash = 'singleArticles/' + singleIdProducts;
        console.log(singleIdProducts);
-      ajaxSingleProducts(singleIdProducts)
+     // ajaxSingleProducts(singleIdProducts)
 });
 
 /*FUNCION PARA VER LA DESCRIPCION PARTICULAR DE CADA FOTO DE ARETES*/
@@ -288,4 +283,116 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
     '</div>'
         return template;
     }
-  });
+
+
+/*********************************************************CAMBIANTO URLS******************************************************* */
+
+
+
+$(window).on('hashchange', function(){
+    render(decodeURI(window.location.hash));
+});
+    $(window).trigger('hashchange');
+
+// Navigation
+function render(url) {
+      console.log('hola');
+
+  // Get the keyword from the url.
+  var temp = url.split('/')[0];
+  console.log(temp);
+
+  // Hide whatever page is currently shown.
+  //$('.main-content .page').removeClass('visible');
+
+
+  var	map = {
+
+    // The "Homepage".
+    '': function() {
+         homePage();
+    },
+
+    // Single Products page.
+    '#allArticles': function() {
+        console.log("entrando a all articles aretes")
+      // Get the index of which product we want to show and call the appropriate function.
+        pageAllArticulesEarrings();
+    },
+    '#singleArticles': function() {
+
+        // Get the index of which product we want to show and call the appropriate function.
+                var pageIdSingleArticule = url.split('#singleArticles/')[1].trim();
+                console.log(url);
+                console.log(url.split('#singleArticles/'));
+               pageSingleArticuleEarrings(pageIdSingleArticule);
+      },
+     '#userLogin': function(){
+              showUserLogin();
+     } 
+
+  };
+
+  // Execute the needed function depending on the url keyword (stored in temp).
+  if(map[temp]){
+    map[temp]();
+  }
+  // If the keyword isn't listed in the above - render the error page.
+  else {
+    renderErrorPage();
+      }
+  
+  }
+  
+
+function homePage(){
+  $(".show-home").show();
+  $(".show-home2").show();
+  $( ".show-Products" ).hide();
+  $( ".login" ).hide();
+  $( ".car-Buy" ).hide();
+  $(".show-AllProducts").hide();
+  $( "#product-single-description" ).hide();
+
+  console.log('pagina de Home');
+}
+
+function pageAllArticulesEarrings(){
+ $(".show-home").show();
+ $(".show-home2").hide();
+  $(".show-AllProducts").show();
+  $( ".show-Products" ).hide();
+  $( ".login" ).hide();
+  $( ".car-Buy" ).hide();
+  $( "#product-single-description" ).hide();
+   ajaxEarrings();
+}
+
+ function pageSingleArticuleEarrings(ageIdSingleArticule){
+    $(".show-home").show();
+    $(".show-home2").hide();
+    $( ".show-AllProducts" ).hide();
+    $( ".login" ).hide();
+    $( ".car-Buy" ).hide();
+    $( "#product-single-description" ).show();
+     ajaxSingleProducts(ageIdSingleArticule);
+      console.log('renderSingleProductPage');
+  }
+  function showUserLogin(){
+    $(".show-home").show();
+    $(".show-home2").hide();
+    $( ".show-AllProducts" ).hide();
+    $( ".login" ).show();
+    $( ".car-Buy" ).hide();
+    $( "#product-single-description" ).hide();
+  }
+  function renderErrorPage(data){
+      console.log('renderErrorPage');
+
+  }
+
+  $(document).on('click', '#go-back', function(){
+      window.location.href='';
+  })
+
+});
