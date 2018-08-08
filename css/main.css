@@ -22,9 +22,11 @@ div ul li a i {
     color:#af4fe0;
     font-weight: bolder;
 }
-/* .row{
-    margin-bottom:35px;
-} */
+#search{
+    color:black;
+    background-color: white;
+    border-radius: 5px;
+}
 #format-collapsible{
     width: 100%;
     background-color:transparent;
