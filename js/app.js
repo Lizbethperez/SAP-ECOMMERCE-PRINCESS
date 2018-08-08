@@ -237,11 +237,39 @@ function descriptionSingleProducts(data){
   var articlePrice= data.price;
   var articlePictures=data.pictures;
   var principalImg=data.thumbnail;
-  console.log(articleDescription);
-  console.log(articlePrice);
-  console.log(articlePictures);
-  console.log(principalImg);
+  var picturesArray=[];
+  for(j=0;j<4;j++){
+     picturesArray.push(articlePictures[j]);
+  }
+  console.log(picturesArray);
+  var imageSmallOne=picturesArray[0].url;
+  var imageSmallTwo=picturesArray[1].url;
+  var imageSmallThree=picturesArray[2].url;
+  var imageSmallFour=picturesArray[3].url;
+  console.log(imageSmallFour);
+  $('#product-single-description').append(templateOneProducts(principalImg,articleDescription,articlePrice,imageSmallOne,imageSmallTwo,imageSmallThree,imageSmallFour))
 }
+
+function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduct,imageSmall1,imageSmall2,imageSmall3,imageSmall4){
+  var templateOneProduct='<div class="row">'+
+                '<img class="col l4 offset-l4 s4 offset-s4 center articuleImageDemostration" src="'+principalImage+'" alt="descripcionImg">'+
+            '</div>'+
+            '<div class="row">'+
+                '<h5 class="center">'+descriptionOneProduct+'</h5>'+
+                '<h5 class="center">'+priceOneProduct+'</h5>'+
+            '</div>'+
+            '<div class="row">'+
+               '<img  class="col l2 offset-l2 s6 small-pictureArticule" src="'+imageSmall1+'" alt="description2">'+
+               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall2+'" alt="description2">'+
+               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
+               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall4+'" alt="description2">'+
+            '</div>'+
+            '<div class="row">'+
+                 '<a class="col l2 offset-l5 s6 offset-s3 btn" href="#">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</a>'+
+            '</div>'
+      return templateOneProduct;      
+}
+
     function template(idJewelry, pictureJewelry,titleJewelry,priceJewelry){
         var template = '<div class="col l2 s3 format-template" id="product1">'+
             '<div class="">'+
@@ -260,5 +288,4 @@ function descriptionSingleProducts(data){
     '</div>'
         return template;
     }
-
   });

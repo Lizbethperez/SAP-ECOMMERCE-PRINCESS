@@ -10,7 +10,7 @@ background-image: url("../assets/background4.jpg");
 background-size: cover;
 }
 nav.nav-extended .nav-wrapper{
-    height: 15vh;
+    height: 20vh;
 }
 img.responsive-img{
     max-width: 100%;
@@ -269,7 +269,7 @@ color:black;
 
 /*FORMATOS PARA EL TEMPLATE DE UN SOLO PRODUCTO*/
 .small-pictureArticule{
-    width: 70%;
+    width: 50%;
     height: 20vh;
 }
 .articuleImageDemostration{
