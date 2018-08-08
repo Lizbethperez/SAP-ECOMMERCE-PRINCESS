@@ -325,6 +325,14 @@ color:black;
         font-family: 'Modern Antiqua', cursive;
         padding: 0 2px;
     }
+
+    #search{
+        color:black;
+        background-color: white;
+        border-radius: 5px;
+        width: 80%;
+        margin-left: 1em;
+    }
     /*FORMATOS CARRUSEL*/
     .carousel{
         height: 20vh;

@@ -329,7 +329,10 @@ function pageAllArticules(option){
       console.log('renderErrorPage');
 
   }
+ //BOTON PARA PAGAR CON PAYPAL
 
+
+ 
   //SE EJECUTARA CUNADO SE TENGA UN BOTON DE REGRESAR. 
   /*$(document).on('click', '#go-back', function(){
       window.location.href='';

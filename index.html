@@ -242,7 +242,7 @@
                         <span class="col l4 offset-l2 text-size">Total:</span>
                         <span class="center text-size col l4 s6">$200.00</span>
                     </div>
-                    <a class="btn center col l7 offset-l3 s6 offset-s3" href="#">FINALIZAR COMPRA</a>
+                   <div id="paypal-button"></div>
                     <br>
                 </div>
             </div>
@@ -265,7 +265,6 @@
                 <div class="center col l1 s2 formt-text-mobiledesktop">$200.00</div>
             </div>
         </section>
-    </section>
    
             <!-- <div class="row">
                 <img class="col l4 offset-l4 s4 offset-s4 center articuleImageDemostration" src="assets/aretes2.jpg" alt="descripcionImg">
@@ -283,7 +282,32 @@
             <div class="row">
                  <a class="col l2 offset-l5 s6 offset-s3 btn" href="#">Agregar al Carrito <i class="small material-icons">shopping_cart</i></a>
             </div> -->
-    
+         
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <script>
+            paypal.Button.render({
+             env: 'sandbox',
+             client: {
+               sandbox: 'lizbeth_perez_v@hotmail.com'
+             },
+             payment: function (data, actions) {
+               return actions.payment.create({
+                 transactions: [{
+                   amount: {
+                     total: '20,000.00',
+                     currency: 'MXN'
+                   }
+                 }]
+               });
+             },
+             onAuthorize: function (data, actions) {
+               return actions.payment.execute()
+                 .then(function () {
+                   window.alert('Thank you for your purchase!');
+                 });
+             }
+            }, '#paypal-button');
+            </script>
        
     <footer class="footer show-home">
         <div class="container">
