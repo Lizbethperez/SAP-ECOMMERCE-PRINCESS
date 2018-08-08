@@ -8,7 +8,9 @@ nav{
 color: #e053ed;
 background-image: url("../assets/background4.jpg");
 background-size: cover;
-
+}
+nav.nav-extended .nav-wrapper{
+    height: 15vh;
 }
 img.responsive-img{
     max-width: 100%;
@@ -20,9 +22,9 @@ div ul li a i {
     color:#af4fe0;
     font-weight: bolder;
 }
-.row{
+/* .row{
     margin-bottom:35px;
-}
+} */
 #format-collapsible{
     width: 100%;
     background-color:transparent;
@@ -64,7 +66,7 @@ nav i.material-icons {
 }
 
 /*formatos Footer */
-.container div .format-text-footer{
+.container div.format-text-footer{
     color:#af4fe0;
     font-size: 20px;
     display: inline-block;
@@ -75,14 +77,16 @@ nav i.material-icons {
     margin: 5px;
     font-weight: 500;
 }
-.page-footer {
+footer {
  background-color: #ffddf4;
 }
+
 .format-text-footer{
   color:#ab47bc;
   font-weight: bolder;
 }
 .container{
+    max-width: 100%;
     color:#ab47bc;
 }
 #format-row-footer{
@@ -91,6 +95,14 @@ margin-bottom: 5px;
 .format-img-redes{
     height: 20vh;
     width: 100%
+    }
+
+    #reserve-rigths{
+        padding: 1em;
+        text-align: center;
+    width: 100%;
+    background-color: black;
+    color: lightgray;
     }
 
 /*FORMATOS PARA EL CONTENIDO PRINCIPAL PRIMERA SECCION */
@@ -152,32 +164,47 @@ margin-bottom: 5px;
 /* tercera seccion */
 .format-img-section3{
     width: 100%;
-    height: 40vh;
+    height: auto;
 }
 /*formatos para el template*/
 .format-template{
-    border: 2px solid black;
     border-radius: 2%;
+    height: auto;
+    margin-top:2em;
 
 }
 .format-img-description{
-    width: 60%;
-    height: 40vh;
+    width: 100%;
+    border: 2px solid #ab47bc;
+    border-radius: 5%;
+    /* height: 35vh; */
 }
 .format-text-template{
   font-size: 15px;
   font-family: 'Patrick Hand', cursive;
   font-weight: bolder;
-  margin-left: 3em;
+  /* margin: 50px; */
 }
-div ul li a i{
+div>span.format-icons-card>a>i{
   font-size: 20px;
   color:purple;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
 }
-#template-Product-description, #product1, #product2, #product3{
-    margin-left: 5em;
+div>span.format-icons-card>a>i.card-move{
+    margin-left:1em;
 }
+div>span.format-icons-card>a>i.heart-move{
+   float: right; 
+    margin-right: 1.5em;
+}
+/* #template-Product-description{
+    margin:50px;
+} */
+ #product1, #product2, #product3{
+    height: fit-content;
+}
+
+
 
 /*FORMATOS LOGIN*/
 .btn{
@@ -232,6 +259,23 @@ color:black;
     font-family: 'Patrick Hand', cursive;
     margin-bottom: 1px solid #ab47bc;
     margin-left: 2em;
+}
+.format-more{
+    font-size: 15px;
+    color:black;
+    font-weight: bolder;
+
+}
+
+/*FORMATOS PARA EL TEMPLATE DE UN SOLO PRODUCTO*/
+.small-pictureArticule{
+    width: 70%;
+    height: 20vh;
+}
+.articuleImageDemostration{
+    padding-left: 1em;
+    width: 50%;
+    height: 45vh;
 }
 /*FORMATOS PARA VERSION MOBILE*/
 @media(max-width:425px){
@@ -320,39 +364,48 @@ color:black;
         background-image: url("../assets/collares2.png");
         height: 25vh;
     }
-    /* tercera seccion */
-    .format-img-section3{
-         width: 100%;
-        height: 15vh;
-   }
    /*formatos para el template*/
     .format-template{
-        border: 2px solid black;
         border-radius: 2%;
+        height: auto;
+        margin-top:2em;
 
     }
     .format-img-description{
-        width: 45%;
-        height: 25vh;
+        width: 100%;
+        border: 2px solid #ab47bc;
+        border-radius: 5%;
     }
     .format-text-template{
         font-size: 10px;
         font-family: 'Patrick Hand', cursive;
         font-weight: bolder;
-        margin-left: 2.2em;
     }
-    div ul li a i{
+    div>span.format-icons-card>a>i{
         font-size: 10px;
         color:purple;
-        margin-bottom: 0.5em;
+        /* margin-bottom: 1em; */
+      }
+      div>span.format-icons-card>a>i.card-move{
+        margin-left:1em;
     }
-        #template-Product-description, #product1, #product2, #product3{
-         margin-left: 1.4em;
-         margin-bottom: 1em;
+    div>span.format-icons-card>a>i.heart-move{
+       float: right; 
+        margin-right: 1.5em;
     }
-    #product1>.row, #product2>.row, #product3>.row {
-        margin-bottom: 0;
+    /* #template-Product-description{
+        margin:50px;
+    } */
+     #product1, #product2, #product3{
+        height: fit-content;
     }
+    .format-more{
+        margin-left: 5px;
+        font-size: 12px;
+        color:black;
+        text-decoration: none;
+    }
+
     /*FORMATOS CARRITO DE COMPRAS*/
     .format-title-buys{
     font-weight: bolder;

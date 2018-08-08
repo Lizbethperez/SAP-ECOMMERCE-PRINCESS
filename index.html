@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Modern+Antiqua|Pinyon+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,197 +14,200 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Ecommerce Accesoria</title>
 </head>
+
 <body>
     <nav class="nav-extended">
         <div class="nav-wrapper row">
             <a href="#" class=" left col l3 offset-l5 s5  offset-s3 brand-logo format-logo">
                 <div clas="row">
                     <img class="responsive-img col l4 s5" src="assets/princess.png" alt="">
-                    <h3 class"col l6 s5">Princess</h3>
+                    <h3 class "col l6 s5">Princess</h3>
                 </div>
-             
+
             </a>
-            <ul class="collapsible hide-on-large-only" >
+            <ul id="nav-mobile" class="col l3 right hide-on-med-and-down">
+                <li>
+                    <a class="dropdown-trigger formatDropdown" href="#!" data-target="dropdown1">WishList
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="badges.html">
+                        <i class="large material-icons">shopping_cart</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="collapsible.html">
+                        <i class="large material-icons">account_circle</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <section class="hide">
+            <ul class="collapsible hide-on-large-only">
                 <li>
                     <div class="collapsible-header" id="format-collapsible">
-                        <i class="material-icons">menu</i></div>
+                        <i class="material-icons">menu</i>
+                    </div>
                     <div class="collapsible-body">
                         <span>WELCOME PRINCESS..</span>
-                        <a href="collapsible.html"><i class="large material-icons">account_circle</i></a>
-                        <a href="badges.html"><i class="large material-icons">shopping_cart</i></a>
-                       
-                    
+                        <a href="collapsible.html">
+                            <i class="large material-icons">account_circle</i>
+                        </a>
+                        <a href="badges.html">
+                            <i class="large material-icons">shopping_cart</i>
+                        </a>
                     </div>
                 </li>
             </ul>
-
-            <ul id="nav-mobile" class="col l3 right hide-on-med-and-down">
-                <li><a class="dropdown-trigger formatDropdown" href="#!" data-target="dropdown1">WishList<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a href="badges.html"><i class="large material-icons">shopping_cart</i></a></li>
-                <li><a href="collapsible.html"><i class="large material-icons">account_circle</i></a></li>
-            </ul>
-        </div>
-        <form class="row"> 
-                <div class="col l1 s2 formatIconSearch"><i class="right large material-icons">search</i></div>
+            <form class="row">
+                <div class="col l1 s2 formatIconSearch">
+                    <i class="right large material-icons">search</i>
+                </div>
                 <div class="col l10 s9 input-field">
-                  <input id="search" type="search" required placeholder="Buscar Productos">
-                  <i class="left material-icons">close</i>
+                    <input id="search" type="search" required placeholder="Buscar Productos">
+                    <i class="left material-icons">close</i>
                 </div>
-              </form>
-        <div class="nav-content row">
-            <ul class="tabs tabs-transparent col l8 offset-l2 s12">
-                <li class="tab"><a href="#test1">Aretes</a> </li>
-                <li class="tab"> <a href="#test2">Lentes</a></li>
-                <li class="tab"><a href="#test4">Collares</a></li>
-                <li class="tab"><a href="#test4">Pulseras</a></li>
-                <li class="tab"><a href="#test4">Relojes</a></li>
-                <li class="tab"><a href="#test4">Bolsas</a></li>
-            </ul>
-            <!--DESGRLOCE DEL DROPDOWN WISH-LIST-->
-            <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
+            </form>
+            <div class="nav-content row">
+                <ul class="tabs tabs-transparent col l8 offset-l2 s12">
+                    <li class="tab">
+                        <a href="#test1">Aretes</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test2">Lentes</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test4">Collares</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test4">Pulseras</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test4">Relojes</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test4">Bolsas</a>
+                    </li>
+                </ul>
+                <!--DESGRLOCE DEL DROPDOWN WISH-LIST-->
+                <ul id="dropdown1" class="dropdown-content">
+                    <li>
+                        <a href="#!">one</a>
+                    </li>
+                    <li>
+                        <a href="#!">two</a>
+                    </li>
                     <li class="divider"></li>
-                    <li><a href="#!">three</a></li>
-                  </ul>
-        </div>
+                    <li>
+                        <a href="#!">three</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
     </nav>
-    <div class="carousel carousel-slider">
-        <a class="carousel-item" href="#one!"><img src="assets/ofert1.png"></a>
-        <a class="carousel-item" href="#two!"><img src="assets/oferta.gif"></a>
-        <a class="carousel-item" href="#three!"><img src="assets/ofert7.png"></a>
-        <a class="carousel-item" href="#four!"><img src="assets/ofert4.png"></a>
-        <a class="carousel-item" href="#five!"><img src="assets/ofert6.png"></a>
-    </div>
-    <section class="container-content">
-        <div class="row content-allImages" >
-            <div class="col l3 s3 format-First-Item" id="first-Image"> <p class="center">Accesorios de cabello</p></div>
-            <div class="col l3 s3 format-First-second" id="second-Image"><p class="center">Aretes</p></div>
-            <div class="col l3 s3 format-First-third" id="third-Image"><p class="center">Collares</p></div>
+    <section class="hide">
+        <div class="carousel carousel-slider">
+            <a class="carousel-item" href="#one!">
+                <img src="assets/ofert1.png">
+            </a>
+            <a class="carousel-item" href="#two!">
+                <img src="assets/oferta.gif">
+            </a>
+            <a class="carousel-item" href="#three!">
+                <img src="assets/ofert7.png">
+            </a>
+            <a class="carousel-item" href="#four!">
+                <img src="assets/ofert4.png">
+            </a>
+            <a class="carousel-item" href="#five!">
+                <img src="assets/ofert6.png">
+            </a>
         </div>
+        <section class="container-content">
+            <div class="row content-allImages">
+                <div class="col l3 s3 format-First-Item" id="first-Image">
+                    <p class="center">Accesorios</p>
+                </div>
+                <div class="col l3 s3 format-First-second" id="second-Image">
+                    <p class="center">Aretes</p>
+                </div>
+                <div class="col l3 s3 format-First-third" id="third-Image">
+                    <p class="center">Collares</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col l12 s12 format-img1-section2">
+                    <p>LO MAS NUEVO</p>
+                    <a class="right" href="#">
+                        <span>Concelo Ahora..</span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </section>
-    <section>
-        <div class="row">
-            <div class="col l12 s12 format-img1-section2">
-                <p>LO MAS NUEVO</p>
-                <a class="right" href="#"><span>Concelo Ahora..</span></a>
-        </div>
-        </div>
-    </section>
-    <section>
-        <div class="row">
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/lentes1.png" alt="lentes"></div>
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/love.png" alt="product1"></div>
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/love2.png" alt="product2"></div>
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/love3.png" alt="product3"></div>
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/love4.png" alt="product4"></div>
-            <div class="col l2 s2"><img class="format-img-section3" src="assets/love5.png" alt="product5"></div>
 
-        </div>
-    </section>
-
-    <!--TEMPLATE DESCRIPCION DE CADA PRODUCTO-->
-    <section>
+    <!-- TEMPLATE DESCRIPCION DE CADA PRODUCTO-->
+    <section class='hide'>
         <div class="row" id="template-Product-description">
-            <div class="col l3 s3 format-template" id="product1">
-                <div class="row">
-                   <img class="col l12 s12 format-img-description"src="assets/love2.png" alt="">
-                </div>
-                <div class="row">
-                    <ul class="col l7 s7 format-text-template">
-                        <li>case Samsung S8</li>
-                        <li>ID:CX123565</li>
-                        <li><u>$155.00</u></li>
-                    </ul>
-                    <ul class="col l2 s2 offset-l1">
-                        <li><a href="#"><i class="fas fa-cart-plus"></i></a></li>
-                        <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col l3 s3 format-template"id="product2">
-                    <div class="row">
-                       <img class="col l12 s12 format-img-description"src="assets/love2.png" alt="">
-                    </div>
-                    <div class="row">
-                        <ul class="col l7 s7 format-text-template">
-                            <li>case Samsung S8</li>
-                            <li>ID:CX123565</li>
-                            <li><u>$155.00</u></li>
-                        </ul>
-                        <ul class="col l2 s2 offset-l1">
-                            <li><a href="#"><i class="fas fa-cart-plus"></i></a></li>
-                            <li><a href="#"> <i class="fas fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col l3 s3 format-template" id="product3">
-                        <div class="row">
-                           <img class="col l12 s12 format-img-description"src="assets/love2.png" alt="">
-                        </div>
-                        <div class="row">
-                            <ul class="col l7 s7 format-text-template">
-                                <li>case Samsung S8</li>
-                                <li>ID:CX123565</li>
-                                <li><u>$155.00</u></li>
-                            </ul>
-                            <ul class="col l2 s2 offset-l1">
-                                <li><a href="#"><i class="fas fa-cart-plus"></i></a> </li>
-                                <li><a href="#"> <i class="fas fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
         </div>
     </section>
 
-<!--SECCION LOGIN-->
-<section>
-    <div class="row">
-        <h4 class="col l10 offset-l1  sl2 offset-s1">Incia Sesion o Crea Una cuenta </h4>
-    </div>
-   </section>
-<!--Seccion Formulario del Login-->
-<section>
-<div class="row">
-    <div class="col l4 offset-l1 s10 offset-s1">
-        <h5>Clientes Nuevos</h4><br><br>
-        <h6 class="format-newClient">¡Crea una cuenta en nuestra tienda! Podrás realizar el proceso de pago más rápido,
-             guardar múltiples direcciones de envío, ver y rastrear tus pedidos y ¡Más</h6><br><br>
+    <!--SECCION LOGIN-->
+    <section class="hide login">
         <div class="row">
-            <a class="col s10 offset-s1 l7 offset-l2 waves-effect btn waves-light modal-trigger" href="#modal1">Crear Cuenta</a>
+            <h4 class="col l10 offset-l1  sl2 offset-s1">Incia Sesion o Crea Una cuenta </h4>
         </div>
-    </div>
-    <form class="col l4 offset-l1 s10 offset-s1 ">
-        <div class="row">
-            <h5 class="center">Clientes Registrados</h4><br>
-            <h6>Ya tines Cuenta!! Inicia Sesion con tus Datos</h6>
-            <div class="input-field col s10 l10 offset-l1">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">User Name/Email</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s10 l10 offset-l1">
-                <i class="material-icons prefix">lock</i>
-                <input id="icon_telephone" type="password" class="validate">
-                <label for="icon_telephone">Password</label>
-            </div>
-        </div>
-        <div class="row">
-            <a id="btn-login" class="waves-effect waves-light btn col s5 offset-s3 l4 offset-l4">Inicia Sesion</a>
-        </div>
-        <form action="#">
-            <p id="format-checkbox">
-                <label>
-                    <input type="checkbox" />
-                    <span>Recordarme</span>
-                 </label>
-            </p>
-        </form>
-    </form>
-</div>
-<!--Seccion Modal para el Sing Up-->
+        <!--Seccion Formulario del Login-->
+        <section>
+            <div class="row">
+                <div class="col l4 offset-l1 s10 offset-s1">
+                    <h5>Clientes Nuevos</h5>
+                    <br>
+                    <br>
+                    <h6 class="format-newClient">¡Crea una cuenta en nuestra tienda! Podrás realizar el proceso de pago más rápido, guardar múltiples
+                        direcciones de envío, ver y rastrear tus pedidos y ¡Más</h6>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <a class="col s10 offset-s1 l7 offset-l2 waves-effect btn waves-light modal-trigger" href="#modal1">Crear Cuenta</a>
+                    </div>
+                </div>
+                <form class="col l4 offset-l1 s10 offset-s1 ">
+                    <div class="row">
+                        <h5 class="center">Clientes Registrados</h4>
+                            <br>
+                            <h6>Ya tines Cuenta!! Inicia Sesion con tus Datos</h6>
+                            <div class="input-field col s10 l10 offset-l1">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix" type="text" class="validate">
+                                <label for="icon_prefix">User Name/Email</label>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 l10 offset-l1">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="icon_telephone" type="password" class="validate">
+                            <label for="icon_telephone">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a id="btn-login" class="waves-effect waves-light btn col s5 offset-s3 l4 offset-l4">Inicia Sesion</a>
+                    </div>
+                    <form action="#">
+                        <p id="format-checkbox">
+                            <label>
+                                <input type="checkbox" />
+                                <span>Recordarme</span>
+                            </label>
+                        </p>
+                    </form>
+                </form>
+        </section>
+        <!--Seccion Modal para el Sing Up
 <section>
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -251,70 +255,105 @@
              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
         </div>
      </div>
-</section>
-</section>
-<!--VISTA PARA COMPRAR PRODUCTOS-->
-<section>
-    <h4 class="title-for-mobile">MI COMPRA</h4>
-    <div class="row ">
-        <div class="col l3 offset-l8 s6 offset-s5 format-finish-buy">
-                <h5 class="center col l12 s12 text-size">Resumen de Compra</h5>
-            <div clas="row"></div>
-            <div class="row">
-                <span class="col l4 offset-l2 text-size" >Total:</span>
-                <span class="center text-size col l4 s6">$200.00</span> 
-            </div>
-               <a class="btn center col l7 offset-l3 s6 offset-s3" href="#">FINALIZAR COMPRA</a><br>
-        </div>
-    </div>
-    <div class="row format-title-buys">
-        <div class="center col l4 s5">Producto</div>
-        <div class="center col l1 s2"> Precio</div>
-        <div class="center col l1 s2">Cantidad</div>
-        <div class="center col l1 s2">Subtotal</div>
-    </div>
-    <!--TEMPLATE PARA LAS COMPRAS(AGREGAR PRODUCTOS AL CARRITO)-->
-    <div class="row">
-            <div class="center col l4 s5">
-                <div class"row">
-                    <img class="col l2 s4 responsive-img"src="assets/love.png" alt="producto-carrito">
-                    <h6 class="col l5 s1 offset-l1 formt-text-mobiledesktop">Samsung Porta Celular</h6>
+  </section>-->
+        <!--VISTA PARA COMPRAR PRODUCTOS-->
+        <section class='hide car-Buy'>
+            <h4 class="title-for-mobile">MI COMPRA</h4>
+            <div class="row ">
+                <div class="col l3 offset-l8 s6 offset-s5 format-finish-buy">
+                    <h5 class="center col l12 s12 text-size">Resumen de Compra</h5>
+                    <div clas="row"></div>
+                    <div class="row">
+                        <span class="col l4 offset-l2 text-size">Total:</span>
+                        <span class="center text-size col l4 s6">$200.00</span>
+                    </div>
+                    <a class="btn center col l7 offset-l3 s6 offset-s3" href="#">FINALIZAR COMPRA</a>
+                    <br>
                 </div>
             </div>
-            <div class="center col l1 s2 formt-text-mobiledesktop"> $200.00</div>
-            <div class="center col l1 s2 formt-text-mobiledesktop">1</div>
-            <div class="center col l1 s2 formt-text-mobiledesktop">$200.00</div>
-    </div>
-</section>
-    <footer class="page-footer">
+            <div class="row format-title-buys">
+                <div class="center col l4 s5">Producto</div>
+                <div class="center col l1 s2"> Precio</div>
+                <div class="center col l1 s2">Cantidad</div>
+                <div class="center col l1 s2">Subtotal</div>
+            </div>
+            <!--TEMPLATE PARA LAS COMPRAS(AGREGAR PRODUCTOS AL CARRITO)-->
+            <div class="row">
+                <div class="center col l4 s5">
+                    <div class "row">
+                        <img class="col l2 s4 responsive-img" src="assets/love.png" alt="producto-carrito">
+                        <h6 class="col l5 s1 offset-l1 formt-text-mobiledesktop">Samsung Porta Celular</h6>
+                    </div>
+                </div>
+                <div class="center col l1 s2 formt-text-mobiledesktop"> $200.00</div>
+                <div class="center col l1 s2 formt-text-mobiledesktop">1</div>
+                <div class="center col l1 s2 formt-text-mobiledesktop">$200.00</div>
+            </div>
+        </section>
+    </section>
+    <section "product-single-description">
+            <div class="row">
+                <img class="col l4 offset-l4 s4 offset-s4 center articuleImageDemostration" src="assets/aretes2.jpg" alt="descripcionImg">
+            </div>
+            <div class="row">
+                <h5 class="center">Descripcion Producto</h5>
+                <h5 class="center">$200.00 MX</h5>
+            </div>
+            <div class="row">
+               <img  class="col l2 offset-l2 s6 small-pictureArticule" src="assets/aretes2.jpg" alt="description2">
+               <img  class="col l2 s6 small-pictureArticule" src="assets/collares.jpg" alt="description2">
+               <img  class="col l2 s6 small-pictureArticule " src="assets/collares.jpg" alt="description2">
+               <img  class="col l2 s6 small-pictureArticule" src="assets/collares.jpg" alt="description2">
+            </div>
+            <div class="row">
+                 <a class="col l2 offset-l5 btn" href="#">Agregar al Carrito <i class="small material-icons">shopping_cart</i></a>
+            </div>
+       
+       </section>
+       
+    <footer class="footer">
         <div class="container">
             <h5 class="center format-text-footer">Follow Us Princess</h5>
-            <div class="row"id="format-row-footer">
+            <div class="row" id="format-row-footer">
                 <div class="col l12 s12">
                     <div class="row" id="format-row-footer">
-                            <div class="col l2 s3 offset-l2 container-format-footer"><a class="format-text-footer" href="#!"><i class="fab fa-facebook-f"></i> Facebook</a></div>
-                            <div class="col l2 s3"><a class="format-text-footer" href="#!"><i class="fab fa-twitter"></i> Twitter</a></div>
-                            <div class="col l2 s3"><a class="format-text-footer" href="#!"><i class="fab fa-instagram"></i> Instagram</a></div>
-                            <div class="col l2 s3"><a class="format-text-footer" href="#!"><i class="fab fa-pinterest-p"></i> Pinterest</a></div>
+                        <div class="col l2 s3 offset-l2 container-format-footer">
+                            <a class="format-text-footer" href="#!">
+                                <i class="fab fa-facebook-f"></i> Facebook</a>
+                        </div>
+                        <div class="col l2 s3">
+                            <a class="format-text-footer" href="#!">
+                                <i class="fab fa-twitter"></i> Twitter</a>
+                        </div>
+                        <div class="col l2 s3">
+                            <a class="format-text-footer" href="#!">
+                                <i class="fab fa-instagram"></i> Instagram</a>
+                        </div>
+                        <div class="col l2 s3">
+                            <a class="format-text-footer" href="#!">
+                                <i class="fab fa-pinterest-p"></i> Pinterest</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col l6 offset-l3">
                     <img class="format-img-redes" src="assets/redes-sociales.gif" alt="redes sociales">
-                </div>    
-            </div>
-        </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2018 Pricess. Todos los derechos Reservados
                 </div>
             </div>
+        </div>
+        <div class="footer-copyright">
+            <div id="reserve-rigths" class="container">
+                © 2018 Pricess. Todos los derechos Reservados
+
+            </div>
+        </div>
     </footer>
-    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>           
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
     <script src="js/assets/materialize.min.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

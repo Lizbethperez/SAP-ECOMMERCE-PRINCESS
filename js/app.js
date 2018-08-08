@@ -4,6 +4,7 @@ $(document).ready(function(){
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true,
+        interval:2000
       });
 });
 
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
 */
+/*
 //OBTENIEDO INFORMACION DE API DE MERCADO LIBRE
   const getAllInformation=()=>{
     const articleRequest = new XMLHttpRequest();
@@ -81,4 +83,182 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Se ha presentado un error');
   }
   getAllInformation();
-  
+ */ 
+
+$(document).ready(function () {
+
+/*AL DAR CLICK SE BUSCAN LOS ARETES EN LA API*/
+$(document).on('click', '#second-Image', function(event){
+  event.preventDefault();
+  ajaxEarrings();
+});
+/*AL DAR CLICK SE BUSCAN LOS COLLARES EN LA API*/
+$(document).on('click', '#third-Image', function(event){
+  event.preventDefault();
+  ajaxNecklace();
+});
+/*AL DAR CLICK SE BUSCAN LOS ACCESORIOS EN LA API*/
+$(document).on('click', '#first-Image', function(event){
+  event.preventDefault();
+  ajaxHairAccesories();
+});
+/*AL DAR CLICK SE BUSCA LA INFORMACION PARTICULAR DE CADA PRODUCTO*/
+$(document).on('click', '.btn-more', function(event){
+  event.preventDefault();
+  var singleIdProducts=$(this).attr('id-jewelry');
+       console.log(singleIdProducts);
+      ajaxSingleProducts(singleIdProducts)
+});
+
+/*FUNCION PARA VER LA DESCRIPCION PARTICULAR DE CADA FOTO DE ARETES*/
+
+
+
+/*FUNCION AJAX PARA BUSCAR ARETES*/
+    function ajaxEarrings() {
+        $.ajax({
+            url: "https://api.mercadolibre.com/sites/MLA/search?q=jewelry=earrings",
+            type: 'GET',
+            datatype: 'json',
+            limit: 20
+        })
+            .done(function (response) {
+                var data = (response);
+                //console.log(data);
+                getEarrings(data);
+            })
+            .fail(function () {
+                console.log("error");
+            })
+    }
+    /*FUNCION AJAX PARA BUSCAR COLLARES*/
+
+    function ajaxNecklace() {
+      $.ajax({
+          url: "https://api.mercadolibre.com/sites/MLA/search?q=jewelry=necklace",
+          type: 'GET',
+          datatype: 'json',
+          limit: 20
+      })
+          .done(function (response) {
+              var data = (response);
+              //console.log(data);
+              getNecklace(data);
+          })
+          .fail(function () {
+              console.log("error");
+          })
+  }
+  /*FUNCION AJAX PARA BUSCAR ACCESORIOS*/
+
+  function ajaxHairAccesories() {
+    $.ajax({
+        url: "https://api.mercadolibre.com/sites/MLA/search?q=accesories=hair=woman",
+        type: 'GET',
+        datatype: 'json',
+        limit: 20
+    })
+        .done(function (response) {
+            var data = (response);
+            console.log(data);
+            getAccesoriesHair(data);
+        })
+        .fail(function () {
+            console.log("error");
+        })
+}
+
+/*funcion AJAX INFORMACION PARTICULAR DE CADA PRODUCTO*/
+function ajaxSingleProducts(idEarrings) {
+  $.ajax({
+      url: "https://api.mercadolibre.com/items/"+`${idEarrings}`,
+      type: 'GET',
+      datatype: 'json',
+      limit: 20
+  })
+      .done(function (response) {
+          var data = (response);
+          console.log(data);
+          descriptionSingleProducts(data);
+      })
+      .fail(function () {
+          console.log("error");
+      })
+}
+
+
+  /*SE OBTIENE INFORMACION DE ARETES*/
+    function getEarrings(infoEarringsData) {
+        var infoEarrings = infoEarringsData.results;
+        //console.log(infoEarrings);
+        for (var i = 0; i < infoEarrings.length; i++) {
+            var singularEarrings = infoEarrings[i];
+            var idEarrings = singularEarrings.id;
+            var pictureEarrings = singularEarrings.thumbnail;
+            var title = singularEarrings.title;
+            var price = '$ ' +singularEarrings.price+" MX";
+
+            $("#template-Product-description").append(template(idEarrings, pictureEarrings,title,price));
+        }
+    }
+     /*SE OBTIENE INFORMACION DE COLLARES*/
+    function getNecklace(infoNeklaceData) {
+      var infoNeklaceData = infoNeklaceData.results;
+      console.log(infoNeklaceData);
+      for (var i = 0; i < infoNeklaceData.length; i++) {
+          var singularNeklace = infoNeklaceData[i];
+          var idNeklace = singularNeklace .id;
+          var pictureNeklace = singularNeklace .thumbnail;
+          var title = singularNeklace.title;
+          var price = '$ '+singularNeklace.price+" MX";
+
+          $("#template-Product-description").append(template(idNeklace,pictureNeklace,title,price));
+      }
+  }
+   /*SE OBTIENE INFORMACION DE ACCESORIOS*/
+  function getAccesoriesHair(infoAccesoriesHairData) {
+    var infoAccesoriesHairData = infoAccesoriesHairData.results;
+    console.log(infoAccesoriesHairData);
+    for (var i = 0; i < infoAccesoriesHairData.length; i++) {
+        var singularAccesoriesHair = infoAccesoriesHairData[i];
+        var idAccesoriesHaair = singularAccesoriesHair.id;
+        var pictureAccesoriesHair = singularAccesoriesHair.thumbnail;
+        var title = singularAccesoriesHair.title;
+        var price = '$ '+singularAccesoriesHair.price.toFixed(2)+' MX';
+
+        $("#template-Product-description").append(template(idAccesoriesHaair,pictureAccesoriesHair,title,price));
+    }
+}
+
+//FUNCION PARA OBTENER LA INFORMACION DE UN ARTICULO EN PARTICULAR
+function descriptionSingleProducts(data){
+  console.log(data);
+  var articleDescription= data.title;
+  var articlePrice= data.price;
+  var articlePictures=data.pictures;
+  var principalImg=data.thumbnail;
+  console.log(articleDescription);
+  console.log(articlePrice);
+  console.log(articlePictures);
+  console.log(principalImg);
+}
+    function template(idJewelry, pictureJewelry,titleJewelry,priceJewelry){
+        var template = '<div class="col l2 s3 format-template" id="product1">'+
+            '<div class="">'+
+              '<img id="jewelyImage" class="format-img-description"src="'+ pictureJewelry+'" alt="">'+
+            '</div>'+
+            '<div>'+
+                '<ul class="format-text-template">'+
+                    '<li>'+titleJewelry+'</li>'+
+                    '<li>'+idJewelry+'</li>'+
+                    '<li>'+priceJewelry+'</li>'+
+               '</ul>'+
+                '<span class="format-icons-card"><a href="#"><i class="card-move fas fa-cart-plus"></i></a></span>'+
+                '<span class="format-icons-card"><a href="#"> <i class="heart-move fas fa-heart"></i> </a></span><br>'+
+                '<div class="center"><a  class="black-text format-more btn-more" href="#" id-jewelry="'+idJewelry+'">More</a></div>'+
+            '</div>'+
+    '</div>'
+        return template;
+    }
+
+  });
