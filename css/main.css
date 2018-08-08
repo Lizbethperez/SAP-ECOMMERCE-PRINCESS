@@ -277,6 +277,37 @@ color:black;
     width: 50%;
     height: 45vh;
 }
+
+/*FORMATOS TABLET*/
+@media(max-width:772px){
+     /*FORMATOS SEGUNDA SECCION*/
+     section div .format-img1-section2 p{
+        color:black;
+        font-size: 15px;
+        margin-left: 35em;
+    }
+    section div .format-img1-section2 a span{
+        color:black;
+         font-size:10px;
+         font-weight: bolder;
+         margin-left: 50px;
+    }
+    .format-img1-section2{
+        background-image: url("../assets/collares2.png");
+        height: 45vh;
+    }
+    nav.nav-extended .nav-wrapper{
+        height: 25vh;
+    }
+    #first-Image, #second-Image, #third-Image{
+        margin-top: 1em;
+        margin-left:3em;
+     }
+    
+}
+
+
+
 /*FORMATOS PARA VERSION MOBILE*/
 @media(max-width:425px){
     h3{
