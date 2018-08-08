@@ -1,70 +1,74 @@
+
+//AUTENTIFICACION CON FIREBASE
+//USANDO FIREBASE PARA INICIAR SESION
+
+(function(){
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCm8xsJEXOZaB6Mho7fFA5iavzUawhIs9A",
+      authDomain: "ecommerce-princess.firebaseapp.com",
+      databaseURL: "https://ecommerce-princess.firebaseio.com",
+      projectId: "ecommerce-princess",
+      storageBucket: "ecommerce-princess.appspot.com",
+      messagingSenderId: "50790994488"
+    };
+  
+    firebase.initializeApp(config);
+    var userEmail=document.getElementById("icon_prefix");
+    var password=document.getElementById("icon_telephone");
+    var btnLogin=document.getElementById("btn-login");
+    var btnSignUp=document.getElementById("btn-signUp");
+    var newEmail=document.getElementById("new-email");
+    var newPassword=document.getElementById("new-password");
+  
+    //Creando un evento para el boton de login
+    btnLogin.addEventListener("click", e => {
+        var userEmailValue=userEmail.value;
+        var passwordValue=password.value;
+        var auth=firebase.auth();
+        var promise=auth.signInWithEmailAndPassword(userEmailValue,passwordValue);
+        promise.catch( e => alert(e.message));
+    });
+    btnSignUp.addEventListener("click", e => {
+      var userEmailValue=newEmail.value;
+      var passwordValue=newPassword.value;
+      var auth=firebase.auth();
+      var promise=auth.createUserWithEmailAndPassword(userEmailValue,passwordValue);
+      promise.catch( e => alert(e.message));
+      });
+  
+      firebase.auth().onAuthStateChanged(firebaseUser =>{
+          if(firebaseUser){
+              console.log("logeado");
+              window.location.hash = '';
+              //location.href="index1.html"
+          }else{
+              console.log("not loged in");
+          }
+      });
+  
+  } ());
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+
 $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('.collapsible').collapsible();
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true,
-        interval:2000
       });
-});
 
-//AUTENTIFICACION CON FIREBASE
-//USANDO FIREBASE PARA INICIAR SESION
+setTimeout(autoplay, 4500);
+function autoplay() {
+    $('.carousel').carousel('next');
+    setTimeout(autoplay, 2000);
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
-
-    (function(){
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCm8xsJEXOZaB6Mho7fFA5iavzUawhIs9A",
-          authDomain: "ecommerce-princess.firebaseapp.com",
-          databaseURL: "https://ecommerce-princess.firebaseio.com",
-          projectId: "ecommerce-princess",
-          storageBucket: "ecommerce-princess.appspot.com",
-          messagingSenderId: "50790994488"
-        };
-      
-        firebase.initializeApp(config);
-        var userEmail=document.getElementById("icon_prefix");
-        var password=document.getElementById("icon_telephone");
-        var btnLogin=document.getElementById("btn-login");
-        var btnSignUp=document.getElementById("btn-signUp");
-        var newEmail=document.getElementById("new-email");
-        var newPassword=document.getElementById("new-password");
-      
-        //Creando un evento para el boton de login
-        btnLogin.addEventListener("click", e => {
-            var userEmailValue=userEmail.value;
-            var passwordValue=password.value;
-            var auth=firebase.auth();
-            var promise=auth.signInWithEmailAndPassword(userEmailValue,passwordValue);
-            promise.catch( e => alert(e.message));
-        });
-        btnSignUp.addEventListener("click", e => {
-          var userEmailValue=newEmail.value;
-          var passwordValue=newPassword.value;
-          var auth=firebase.auth();
-          var promise=auth.createUserWithEmailAndPassword(userEmailValue,passwordValue);
-          promise.catch( e => alert(e.message));
-          });
-      
-          firebase.auth().onAuthStateChanged(firebaseUser =>{
-              if(firebaseUser){
-                  console.log("logeado");
-                  window.location.hash = '';
-                  //location.href="index1.html"
-              }else{
-                  console.log("not loged in");
-              }
-          });
-      
-      } ());
-
-
-$(document).ready(function () {
+var option="";
 //* MOSTRAR AL DAR CLICK DN USER LOGIN 
 $(document).on('click', '#user-login', function(event){
     event.preventDefault();
@@ -80,6 +84,8 @@ $(document).on('click','#buy-car', function(event){
 /*AL DAR CLICK SE BUSCAN LOS ARETES EN LA API*/
 $(document).on('click', '#second-Image', function(event){
   event.preventDefault();
+  $("#template-Product-description").empty();
+    option="aretes";
     window.location.hash = 'allArticles/'
 });
 
@@ -87,13 +93,18 @@ $(document).on('click', '#second-Image', function(event){
 /*AL DAR CLICK SE BUSCAN LOS COLLARES EN LA API*/
 $(document).on('click', '#third-Image', function(event){
   event.preventDefault();
-  ajaxNecklace();
+  $("#template-Product-description").empty();
+  option="collares";
+  //ajaxNecklace();
   window.location.hash = 'allArticles/'
 });
-/*AL DAR CLICK SE BUSCAN LOS ACCESORIOS EN LA API*/
+/*AL DAR CLICK SE BUSCAN LOS ANILLOS EN LA API*/
 $(document).on('click', '#first-Image', function(event){
   event.preventDefault();
-  ajaxHairAccesories();
+  $("#template-Product-description").empty();
+  option="anillos"
+  window.location.hash = 'allArticles/'
+  //ajaxHairAccesories();
 });
 /*AL DAR CLICK SE BUSCA LA INFORMACION PARTICULAR DE CADA PRODUCTO*/
 $(document).on('click', '.btn-more', function(event){
@@ -107,62 +118,24 @@ $(document).on('click', '.btn-more', function(event){
 
 /*FUNCION PARA VER LA DESCRIPCION PARTICULAR DE CADA FOTO DE ARETES*/
 
-
-
 /*FUNCION AJAX PARA BUSCAR ARETES*/
-    function ajaxEarrings() {
+    function ajaxEarrings(option) {
+        console.log(option);
         $.ajax({
-            url: "https://api.mercadolibre.com/sites/MLA/search?q=jewelry=earrings",
+            url: "https://api.mercadolibre.com/sites/MLA/search?q=joyeria"+`${option}`,
             type: 'GET',
             datatype: 'json',
             limit: 20
         })
             .done(function (response) {
                 var data = (response);
-                //console.log(data);
+                console.log(data);
                 getEarrings(data);
             })
             .fail(function () {
                 console.log("error");
             })
     }
-    /*FUNCION AJAX PARA BUSCAR COLLARES*/
-
-    function ajaxNecklace() {
-      $.ajax({
-          url: "https://api.mercadolibre.com/sites/MLA/search?q=jewelry=necklace",
-          type: 'GET',
-          datatype: 'json',
-          limit: 20
-      })
-          .done(function (response) {
-              var data = (response);
-              //console.log(data);
-              getNecklace(data);
-          })
-          .fail(function () {
-              console.log("error");
-          })
-  }
-  /*FUNCION AJAX PARA BUSCAR ACCESORIOS*/
-
-  function ajaxHairAccesories() {
-    $.ajax({
-        url: "https://api.mercadolibre.com/sites/MLA/search?q=accesories=hair=woman",
-        type: 'GET',
-        datatype: 'json',
-        limit: 20
-    })
-        .done(function (response) {
-            var data = (response);
-            console.log(data);
-            getAccesoriesHair(data);
-        })
-        .fail(function () {
-            console.log("error");
-        })
-}
-
 /*funcion AJAX INFORMACION PARTICULAR DE CADA PRODUCTO*/
 function ajaxSingleProducts(idEarrings) {
   $.ajax({
@@ -181,11 +154,9 @@ function ajaxSingleProducts(idEarrings) {
       })
 }
 
-
-  /*SE OBTIENE INFORMACION DE ARETES*/
+  /*SE OBTIENE INFORMACION DE LOS ARTICULOS DE LAS CATEGORIAS:ARETES,ANILLOS,COLLARES*/
     function getEarrings(infoEarringsData) {
         var infoEarrings = infoEarringsData.results;
-        //console.log(infoEarrings);
         for (var i = 0; i < infoEarrings.length; i++) {
             var singularEarrings = infoEarrings[i];
             var idEarrings = singularEarrings.id;
@@ -196,34 +167,6 @@ function ajaxSingleProducts(idEarrings) {
             $("#template-Product-description").append(template(idEarrings, pictureEarrings,title,price));
         }
     }
-     /*SE OBTIENE INFORMACION DE COLLARES*/
-    function getNecklace(infoNeklaceData) {
-      var infoNeklaceData = infoNeklaceData.results;
-      console.log(infoNeklaceData);
-      for (var i = 0; i < infoNeklaceData.length; i++) {
-          var singularNeklace = infoNeklaceData[i];
-          var idNeklace = singularNeklace .id;
-          var pictureNeklace = singularNeklace .thumbnail;
-          var title = singularNeklace.title;
-          var price = '$ '+singularNeklace.price+" MX";
-
-          $("#template-Product-description").append(template(idNeklace,pictureNeklace,title,price));
-      }
-  }
-   /*SE OBTIENE INFORMACION DE ACCESORIOS*/
-  function getAccesoriesHair(infoAccesoriesHairData) {
-    var infoAccesoriesHairData = infoAccesoriesHairData.results;
-    console.log(infoAccesoriesHairData);
-    for (var i = 0; i < infoAccesoriesHairData.length; i++) {
-        var singularAccesoriesHair = infoAccesoriesHairData[i];
-        var idAccesoriesHaair = singularAccesoriesHair.id;
-        var pictureAccesoriesHair = singularAccesoriesHair.thumbnail;
-        var title = singularAccesoriesHair.title;
-        var price = '$ '+singularAccesoriesHair.price.toFixed(2)+' MX';
-
-        $("#template-Product-description").append(template(idAccesoriesHaair,pictureAccesoriesHair,title,price));
-    }
-}
 
 //FUNCION PARA OBTENER LA INFORMACION DE UN ARTICULO EN PARTICULAR
 function descriptionSingleProducts(data){
@@ -285,20 +228,16 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
     }
 
 
-/**CAMBIANTO URLS(SPA)******* */
+/**SPA MOVIENDO URLS */
 $(window).on('hashchange', function(){
     loadingPrincipalPage(decodeURI(window.location.hash));
 });
     $(window).trigger('hashchange');
-    function loadingPrincipalPage(url) {
-        console.log('hola');
-
-        // Get the keyword from the url.
+//EJECUTA EL MOVIMIENTO ENTRE LAS URLS 
+function loadingPrincipalPage(url) {
+        // Se Obtiene La clave de la Url dependiendo de donde estes navegando
         var temp = url.split('/')[0];
-        console.log(temp);
-
         var map = {
-
             // The "Homepage".
             '': function () {
                 homePage();
@@ -306,10 +245,9 @@ $(window).on('hashchange', function(){
             '#allArticles': function () {
                 //llama a la funcion que arrojara el listado con todos los productos. 
                 console.log("entrando a all articles aretes")
-                pageAllArticulesEarrings();
+                pageAllArticules(option);
             },
             '#singleArticles': function () {
-
                 // Se obtiene el Id de cada producto en particular 
                 var pageIdSingleArticule = url.split('#singleArticles/')[1].trim();
                 console.log(url);
@@ -337,8 +275,6 @@ $(window).on('hashchange', function(){
             renderErrorPage();
         }
     }
-
-
 function homePage(){
   $(".show-home").show();
   $(".show-home2").show();
@@ -349,7 +285,7 @@ function homePage(){
   $( "#product-single-description" ).hide();
 }
 
-function pageAllArticulesEarrings(){
+function pageAllArticules(option){
  $(".show-home").show();
  $(".show-home2").hide();
   $(".show-AllProducts").show();
@@ -357,9 +293,9 @@ function pageAllArticulesEarrings(){
   $( ".login" ).hide();
   $( ".car-Buy" ).hide();
   $( "#product-single-description" ).hide();
-   ajaxEarrings();
-}
 
+   ajaxEarrings(option);
+}
  function pageSingleArticuleEarrings(ageIdSingleArticule){
     $(".show-home").show();
     $(".show-home2").hide();
@@ -370,6 +306,7 @@ function pageAllArticulesEarrings(){
      ajaxSingleProducts(ageIdSingleArticule);
       console.log('renderSingleProductPage');
   }
+
   function showUserLogin(){
     $(".show-home").show();
     $(".show-home2").hide();
@@ -378,6 +315,7 @@ function pageAllArticulesEarrings(){
     $( ".car-Buy" ).hide();
     $( "#product-single-description" ).hide();
   }
+
   function showCarBuy(){
     $(".show-home").show();
     $(".show-home2").hide();
