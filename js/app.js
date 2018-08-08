@@ -68,21 +68,19 @@ $(document).ready(function () {
 //* MOSTRAR AL DAR CLICK DN USER LOGIN 
 $(document).on('click', '#user-login', function(event){
     event.preventDefault();
-    
-      //var dressId = $(this).attr('product-id');
       window.location.hash = 'userLogin/'
-      //$(".show-AllProducts").empty();
   });
-  
 
+//MOSTRAR LA FUNCION DEL CARRITO DE COMPRAS
+$(document).on('click','#buy-car', function(event){
+    event.preventDefault();
+      window.location.hash = 'carBuy/'
+  });
 
 /*AL DAR CLICK SE BUSCAN LOS ARETES EN LA API*/
 $(document).on('click', '#second-Image', function(event){
   event.preventDefault();
-  
-    //var dressId = $(this).attr('product-id');
     window.location.hash = 'allArticles/'
-    //$(".show-AllProducts").empty();
 });
 
   //ajaxEarrings();
@@ -90,6 +88,7 @@ $(document).on('click', '#second-Image', function(event){
 $(document).on('click', '#third-Image', function(event){
   event.preventDefault();
   ajaxNecklace();
+  window.location.hash = 'allArticles/'
 });
 /*AL DAR CLICK SE BUSCAN LOS ACCESORIOS EN LA API*/
 $(document).on('click', '#first-Image', function(event){
@@ -99,6 +98,7 @@ $(document).on('click', '#first-Image', function(event){
 /*AL DAR CLICK SE BUSCA LA INFORMACION PARTICULAR DE CADA PRODUCTO*/
 $(document).on('click', '.btn-more', function(event){
   event.preventDefault();
+ $('#product-single-description').empty();
   var singleIdProducts=$(this).attr('id-jewelry');
   window.location.hash = 'singleArticles/' + singleIdProducts;
        console.log(singleIdProducts);
@@ -259,7 +259,7 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
                '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
                '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall4+'" alt="description2">'+
             '</div>'+
-            '<div class="row">'+
+            '<div class="row">'+'<a class="col l2 offset-l5 s6 offset-s3 btn" href="#">REGRESAR'+'</a>'+
                  '<a class="col l2 offset-l5 s6 offset-s3 btn" href="#">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</a>'+
             '</div>'
       return templateOneProduct;      
@@ -285,65 +285,59 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
     }
 
 
-/*********************************************************CAMBIANTO URLS******************************************************* */
-
-
-
+/**CAMBIANTO URLS(SPA)******* */
 $(window).on('hashchange', function(){
-    render(decodeURI(window.location.hash));
+    loadingPrincipalPage(decodeURI(window.location.hash));
 });
     $(window).trigger('hashchange');
+    function loadingPrincipalPage(url) {
+        console.log('hola');
 
-// Navigation
-function render(url) {
-      console.log('hola');
+        // Get the keyword from the url.
+        var temp = url.split('/')[0];
+        console.log(temp);
 
-  // Get the keyword from the url.
-  var temp = url.split('/')[0];
-  console.log(temp);
+        var map = {
 
-  // Hide whatever page is currently shown.
-  //$('.main-content .page').removeClass('visible');
+            // The "Homepage".
+            '': function () {
+                homePage();
+            },
+            '#allArticles': function () {
+                //llama a la funcion que arrojara el listado con todos los productos. 
+                console.log("entrando a all articles aretes")
+                pageAllArticulesEarrings();
+            },
+            '#singleArticles': function () {
 
-
-  var	map = {
-
-    // The "Homepage".
-    '': function() {
-         homePage();
-    },
-
-    // Single Products page.
-    '#allArticles': function() {
-        console.log("entrando a all articles aretes")
-      // Get the index of which product we want to show and call the appropriate function.
-        pageAllArticulesEarrings();
-    },
-    '#singleArticles': function() {
-
-        // Get the index of which product we want to show and call the appropriate function.
+                // Se obtiene el Id de cada producto en particular 
                 var pageIdSingleArticule = url.split('#singleArticles/')[1].trim();
                 console.log(url);
                 console.log(url.split('#singleArticles/'));
-               pageSingleArticuleEarrings(pageIdSingleArticule);
-      },
-     '#userLogin': function(){
-              showUserLogin();
-     } 
+                pageSingleArticuleEarrings(pageIdSingleArticule);
+            },
+            '#userLogin': function () {
+                //Se Manada a llamar a la funcion que muestra la estructura del Login.
+                showUserLogin();
+            },
+            '#carBuy':function (){
+              //SE manda a llamar la Funcion que muestra la Funcion para Mostrar el carrito. 
+                showCarBuy();
+            }
 
-  };
+        };
 
-  // Execute the needed function depending on the url keyword (stored in temp).
-  if(map[temp]){
-    map[temp]();
-  }
-  // If the keyword isn't listed in the above - render the error page.
-  else {
-    renderErrorPage();
-      }
-  
-  }
-  
+        // Se ejecuta la funcion necesaria dependiendo de la palabra que contenga la url que se almacena 
+        //en la variable map. 
+        if (map[temp]) {
+            map[temp]();
+        }
+        // Si la palabra que contenga lam url no la encuentra ejecutara una funcion que mande un error. 
+        else {
+            renderErrorPage();
+        }
+    }
+
 
 function homePage(){
   $(".show-home").show();
@@ -353,8 +347,6 @@ function homePage(){
   $( ".car-Buy" ).hide();
   $(".show-AllProducts").hide();
   $( "#product-single-description" ).hide();
-
-  console.log('pagina de Home');
 }
 
 function pageAllArticulesEarrings(){
@@ -386,13 +378,23 @@ function pageAllArticulesEarrings(){
     $( ".car-Buy" ).hide();
     $( "#product-single-description" ).hide();
   }
+  function showCarBuy(){
+    $(".show-home").show();
+    $(".show-home2").hide();
+    $( ".show-AllProducts" ).hide();
+    $( ".login" ).hide();
+    $( ".car-Buy" ).show();
+    $( "#product-single-description" ).hide();
+  }
+
   function renderErrorPage(data){
       console.log('renderErrorPage');
 
   }
 
-  $(document).on('click', '#go-back', function(){
+  //SE EJECUTARA CUNADO SE TENGA UN BOTON DE REGRESAR. 
+  /*$(document).on('click', '#go-back', function(){
       window.location.href='';
-  })
+  })*/
 
 });
