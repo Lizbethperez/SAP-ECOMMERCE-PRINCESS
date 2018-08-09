@@ -54,8 +54,7 @@
     var instances = M.Modal.init(elems);
   });
 
-$(document).ready(function(paypal){
-    //console.log(paypal);
+$(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('.collapsible').collapsible();
     $('.carousel.carousel-slider').carousel({
@@ -177,31 +176,30 @@ function descriptionSingleProducts(data){
   var articlePictures=data.pictures;
   var principalImg=data.thumbnail;
   var picturesArray=[];
-  for(j=0;j<4;j++){
+  for(j=0;j<3;j++){
      picturesArray.push(articlePictures[j]);
   }
   console.log(picturesArray);
   var imageSmallOne=picturesArray[0].url;
   var imageSmallTwo=picturesArray[1].url;
   var imageSmallThree=picturesArray[2].url;
-  var imageSmallFour=picturesArray[3].url;
-  console.log(imageSmallFour);
-  $('#product-single-description').append(templateOneProducts(principalImg,articleDescription,articlePrice,imageSmallOne,imageSmallTwo,imageSmallThree,imageSmallFour))
+  $('#product-single-description').append(templateOneProducts(principalImg,articleDescription,articlePrice,imageSmallOne,imageSmallTwo,imageSmallThree))
 }
 
-function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduct,imageSmall1,imageSmall2,imageSmall3,imageSmall4){
+//***********************templates************************** */
+
+function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduct,imageSmall1,imageSmall2,imageSmall3){
   var templateOneProduct='<div class="row">'+
-                '<img class="col l4 offset-l4 s4 offset-s4 center articuleImageDemostration" src="'+principalImage+'" alt="descripcionImg">'+
+                '<img class="col l3 offset-l5 s4 offset-s4 center articuleImageDemostration" src="'+principalImage+'" alt="descripcionImg">'+
             '</div>'+
             '<div class="row">'+
                 '<h5 class="center">'+descriptionOneProduct+'</h5>'+
-                '<h5 class="center">'+priceOneProduct+'</h5>'+
+                '<h5 class="center">$'+priceOneProduct+'MXN</h5>'+
             '</div>'+
             '<div class="row">'+
-               '<img  class="col l2 offset-l2 s6 small-pictureArticule" src="'+imageSmall1+'" alt="description2">'+
-               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall2+'" alt="description2">'+
-               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
-               '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall4+'" alt="description2">'+
+               '<img  class="col l3 offset-l2 s6 small-pictureArticule" src="'+imageSmall1+'" alt="description2">'+
+               '<img  class="col l3 s6 small-pictureArticule" src="'+imageSmall2+'" alt="description2">'+
+               '<img  class="col l3 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
             '</div>'+
             '<div class="row">'+'<a class="col l2 offset-l2 s6 offset-s3 btn" id="back">REGRESAR'+'</a>'+
                  '<button class="col l2 offset-l4 s6 offset-s3 btn">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</button>'+
@@ -220,8 +218,8 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
                     '<li>'+idJewelry+'</li>'+
                     '<li>$'+priceJewelry+'MXN</li>'+
                '</ul>'+
-                '<span class="format-icons-card"><button class="addPructCar" title="'+titleJewelry+'"price="'+priceJewelry+'"><i class="card-move fas fa-cart-plus"></i><button></span>'+
-                '<span class="format-icons-card"><i class="heart-move fas fa-heart"></i></span><br>'+
+                '<span class="format-icons-card"><button class="addPructCar btn" title="'+titleJewelry+'"price="'+priceJewelry+'"><i class="card-move fas fa-cart-plus"></i></button></span>'+
+                '<span class="format-icons-card"><i class="heart-move fas fa-heart "></i></span><br>'+
                 '<div class="center"><a  class="black-text format-more btn-more"  id-jewelry="'+idJewelry+'">More</a></div>'+
             '</div>'+
     '</div>'
@@ -229,13 +227,13 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
     }
 
 
-/**SPA MOVIENDO URLS */
+/******************* SPA MOVIENDO URLS ***************************/
 $(window).on('hashchange', function(){
     loadingPrincipalPage(decodeURI(window.location.hash));
 });
     $(window).trigger('hashchange');
 //EJECUTA EL MOVIMIENTO ENTRE LAS URLS 
-function loadingPrincipalPage(url) {
+    function loadingPrincipalPage(url) {
         // Se Obtiene La clave de la Url dependiendo de donde estes navegando
         var temp = url.split('/')[0];
         var map = {
@@ -259,8 +257,8 @@ function loadingPrincipalPage(url) {
                 //Se Manada a llamar a la funcion que muestra la estructura del Login.
                 showUserLogin();
             },
-            '#carBuy':function (){
-              //SE manda a llamar la Funcion que muestra la Funcion para Mostrar el carrito. 
+            '#carBuy': function () {
+                //SE manda a llamar la Funcion que muestra la Funcion para Mostrar el carrito. 
                 showCarBuy();
             }
 
@@ -331,12 +329,11 @@ function pageAllArticules(option){
       console.log('renderErrorPage');
 
   }
-  //SE EJECUTARA CUNADO SE TENGA UN BOTON DE REGRESAR. 
+  //Regresar
     $(document).on('click', '#back', function(){
-      window.location.href='allArticles/';
+    window.location.hash = 'allArticles/'
   });
-
-//Funcion para que cuando se de agregar en el carrito se guarden los artículos
+/***************FUNCIONES PARA AGREGAR ARTICULOS AL CARRITO DE COMPRA************* */
 $(document).on('click', '.addPructCar', function(e){
     e.preventDefault();
     var name = $(this).attr('title');
@@ -363,16 +360,13 @@ $(document).on('click', '#deleteArticle', function(e){
 
     var articlesCarBuy= [];
 
-    //variable para crear un objeto en donde se sustituira los atributos encontrados
+    //Buscando los atributos 
     var  articlesAdd= {
         name: name,
         price: price,
     }
-
-    //Accediendo a local storage
+    //Entrando a  local storage
     if(window.localStorage.proyectECommercePrinces){
-        console.log('existe!');
-        //Si ya hay datos en el localStorage se meten en la variable para ralizar un array de objetos
         articlesCarBuy = JSON.parse(window.localStorage.proyectECommercePrinces);
     }
 
@@ -382,17 +376,18 @@ $(document).on('click', '#deleteArticle', function(e){
 
 }
 
-//Función para borrar artículos del carrito
+//Borrar Articulos
 function deletedArticleCart(j){
        if(window.localStorage.proyectECommercePrinces){
            console.log('existe!');
            //Si ya hay datos en el localStorage se meten en la variable para ralizar un array de objetos
-           var allArticlesCar = JSON.parse(window.localStorage.proyectECommercePrinces);
-           allArticlesCar .splice(j, 1);
-           window.localStorage.proyectECommercePrinces=JSON.stringify(allArticlesCar);
+           var allArticlesCart = JSON.parse(window.localStorage.proyectECommercePrinces);
+           allArticlesCart .splice(j, 1);
+           window.localStorage.proyectECommercePrinces=JSON.stringify(allArticlesCart);
        }
    }
 
+//Mostrar Articulos
 function carShowArticles(){
     console.log('hola');
     $('.car-Buy .cart-products').empty();
@@ -409,6 +404,8 @@ function carShowArticles(){
     $('.total-price').html('$' + totalPrice + 'MXN');
 }
 
+//Template para Pintar los Articulos
+
 function templateCartBuy(productCart, j){
 var template= '<div class="col s12 center">'+
         '<div class="col s4">'+
@@ -416,13 +413,14 @@ var template= '<div class="col s12 center">'+
         '</div>'+
         '<div class="col s4">'+
             '<h6>'+productCart.price+'</h6>'+
-        '</div>'
+        '</div>'+
         '<div class="col s4">'+
-            '<button class="btn j="'+j+'"">Eliminar</button>'+
-        +'</div>'+
+            '<button id="deleteArticle" class="btn j="'+j+'">Eliminar</button>'+
+        '</div>'+
     '</div>'
     return template;
 }
+
 function articlesBuyCartArray(){
     if(window.localStorage.proyectECommercePrinces){
         return JSON.parse(window.localStorage.proyectECommercePrinces);
@@ -431,12 +429,10 @@ function articlesBuyCartArray(){
     }
     
 }
-
-
 });//cierra la funcion Ready
 
 
-//BOTON PARA PAGAR CON PAYPAL
+//***********PAYPAL**************** */
 paypal.Button.render({
     env: 'sandbox',
     client: {
