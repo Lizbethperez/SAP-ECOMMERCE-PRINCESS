@@ -1,17 +1,30 @@
 # PRODUCTO FINAL SPRINT 5
-## ECOMMERCE PRINCESS 
+
+
+* **ELABORADO POR** _Lizbeth Pérez. Karla Martínez_ 
+* **Curso:** _JS DEEP DIVE: SINGLE PAGE APP(SPA)-MULTIUSUARIO CONSUMIENDO DATA REMOTA 
+* **Unidad:** _Producto final_ Sprint 5
+
+## ECOMMERCE PRINCESS
+
+##  Que es Princess
 
 App web  creada bajo los principios de SPA (Single page aplication).
 
-## QUE ES UNA SPA?
+# QUE ES UNA SPA?
 El término "single-page application" (o SPA) usualmente describe aplicaciones que fueron contruidas para la web. Estas aplicaciones son accedidas a través de un navegador web como otros websites, pero ofrece más interacciones dinámicas como si fuese una aplicación móvil nativa o aplicaciones de escritorio.
 
 La diferencia más notable entre un website y un SPA es la cantidad reducida de refrescar la página. Los SPAs tienen un mayor uso de AJAX - una manera de comunicarnos con servidores back-end sin hacer un refrescado completo de la página - para traer datos que use nuestra aplicación. Como resultado, el proceso de renderizar la página ocurre mayormente en el lado del cliente (navegador).
 
+
+## ¿Cómo funciona Princess?
+Princess es una Aplicacion Web de comercio Electronico Mediante la cual El usuario Puede Elegir los Articulos de Su agrado y realizar la Compra de productos mediante Medios Electronicos, esta aplicacion te permite Seleccionar entre Varias Categorias de Productos, ver la descripcion particular de un producto, Agregar al carrito y Efectuar la compra a traves de Paypal.  
+
+
 ## Requerimientos
-#### Dentro de los requerimientos básicos a incluir están::
   * Templating
   * Routing (URLs)
   * DOM & Event Handling (State)
   * API de productos (Descripción, precios, etc). Se Usa Api de Mercado Libre
   * API que permita la compra por parte del usuario, Se emplea Paypal
+  * Login Empleando Firebase

@@ -197,12 +197,12 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
                 '<h5 class="center">$'+priceOneProduct+'MXN</h5>'+
             '</div>'+
             '<div class="row">'+
-               '<img  class="col l3 offset-l2 s6 small-pictureArticule" src="'+imageSmall1+'" alt="description2">'+
-               '<img  class="col l3 s6 small-pictureArticule" src="'+imageSmall2+'" alt="description2">'+
-               '<img  class="col l3 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
+               '<img  class="col l3 offset-l2 s4 offset-s1 small-pictureArticule" src="'+imageSmall1+'" alt="description2">'+
+               '<img  class="col l3 s3 small-pictureArticule" src="'+imageSmall2+'" alt="description2">'+
+               '<img  class="col l3 s3 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
             '</div>'+
-            '<div class="row">'+'<a class="col l2 offset-l2 s6 offset-s3 btn" id="back">REGRESAR'+'</a>'+
-                 '<button class="col l2 offset-l4 s6 offset-s3 btn">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</button>'+
+            '<div class="row">'+'<a class="col l2 offset-l2 s2 offset-s3 btn" id="back">REGRESAR'+'</a>'+
+                 '<button class="col l2 offset-l4 s3 offset-1 btn">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</button>'+
             '</div>'
       return templateOneProduct;      
 }
