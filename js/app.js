@@ -163,7 +163,7 @@ function ajaxSingleProducts(idEarrings) {
             var idEarrings = singularEarrings.id;
             var pictureEarrings = singularEarrings.thumbnail;
             var title = singularEarrings.title;
-            var price = '$ ' +singularEarrings.price+" MX";
+            var price = singularEarrings.price;
 
             $("#template-Product-description").append(template(idEarrings, pictureEarrings,title,price));
         }
@@ -203,8 +203,8 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
                '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall3+'" alt="description2">'+
                '<img  class="col l2 s6 small-pictureArticule" src="'+imageSmall4+'" alt="description2">'+
             '</div>'+
-            '<div class="row">'+'<a class="col l2 offset-l5 s6 offset-s3 btn" href="#">REGRESAR'+'</a>'+
-                 '<a class="col l2 offset-l5 s6 offset-s3 btn" href="#">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</a>'+
+            '<div class="row">'+'<a class="col l2 offset-l2 s6 offset-s3 btn" id="back">REGRESAR'+'</a>'+
+                 '<button class="col l2 offset-l4 s6 offset-s3 btn">Agregar al Carrito'+ '<i class="small material-icons">shopping_cart</i>'+'</button>'+
             '</div>'
       return templateOneProduct;      
 }
@@ -218,11 +218,11 @@ function templateOneProducts(principalImage,descriptionOneProduct,priceOneProduc
                 '<ul class="format-text-template">'+
                     '<li>'+titleJewelry+'</li>'+
                     '<li>'+idJewelry+'</li>'+
-                    '<li>'+priceJewelry+'</li>'+
+                    '<li>$'+priceJewelry+'MXN</li>'+
                '</ul>'+
-                '<span class="format-icons-card"><a href="#"><i class="card-move fas fa-cart-plus"></i></a></span>'+
-                '<span class="format-icons-card"><a href="#"> <i class="heart-move fas fa-heart"></i> </a></span><br>'+
-                '<div class="center"><a  class="black-text format-more btn-more" href="#" id-jewelry="'+idJewelry+'">More</a></div>'+
+                '<span class="format-icons-card"><button class="addPructCar" title="'+titleJewelry+'"price="'+priceJewelry+'"><i class="card-move fas fa-cart-plus"></i><button></span>'+
+                '<span class="format-icons-card"><i class="heart-move fas fa-heart"></i></span><br>'+
+                '<div class="center"><a  class="black-text format-more btn-more"  id-jewelry="'+idJewelry+'">More</a></div>'+
             '</div>'+
     '</div>'
         return template;
@@ -324,20 +324,117 @@ function pageAllArticules(option){
     $( ".login" ).hide();
     $( ".car-Buy" ).show();
     $( "#product-single-description" ).hide();
+    carShowArticles();
   }
 
   function renderErrorPage(data){
       console.log('renderErrorPage');
 
   }
-
-
   //SE EJECUTARA CUNADO SE TENGA UN BOTON DE REGRESAR. 
-  /*$(document).on('click', '#go-back', function(){
-      window.location.href='';
-  })*/
+    $(document).on('click', '#back', function(){
+      window.location.href='allArticles/';
+  });
 
+//Funcion para que cuando se de agregar en el carrito se guarden los artículos
+$(document).on('click', '.addPructCar', function(e){
+    e.preventDefault();
+    var name = $(this).attr('title');
+    console.log(name);
+
+    var price = Number($(this).attr('price'));
+    console.log(price);
+
+    articlesAddCart(name, price);
 });
+
+//función para hacer click al botón Borrar
+$(document).on('click', '#deleteArticle', function(e){
+    e.preventDefault();
+
+    var index = $(this).attr('j');
+    console.log(index);
+
+    deletedArticleCart(index);
+    carShowArticles();
+});
+
+  function articlesAddCart(name, price){
+
+    var articlesCarBuy= [];
+
+    //variable para crear un objeto en donde se sustituira los atributos encontrados
+    var  articlesAdd= {
+        name: name,
+        price: price,
+    }
+
+    //Accediendo a local storage
+    if(window.localStorage.proyectECommercePrinces){
+        console.log('existe!');
+        //Si ya hay datos en el localStorage se meten en la variable para ralizar un array de objetos
+        articlesCarBuy = JSON.parse(window.localStorage.proyectECommercePrinces);
+    }
+
+    //Cada articulo agregado se guarda en el array
+    articlesCarBuy.push(articlesAdd);
+    window.localStorage.proyectECommercePrinces = JSON.stringify(articlesCarBuy);//se hace en string
+
+}
+
+//Función para borrar artículos del carrito
+function deletedArticleCart(j){
+       if(window.localStorage.proyectECommercePrinces){
+           console.log('existe!');
+           //Si ya hay datos en el localStorage se meten en la variable para ralizar un array de objetos
+           var allArticlesCar = JSON.parse(window.localStorage.proyectECommercePrinces);
+           allArticlesCar .splice(j, 1);
+           window.localStorage.proyectECommercePrinces=JSON.stringify(allArticlesCar);
+       }
+   }
+
+function carShowArticles(){
+    console.log('hola');
+    $('.car-Buy .cart-products').empty();
+    var cartArticles= articlesBuyCartArray();
+    console.log('cartArticles',cartArticles)
+    var totalPrice = 0;
+    for(var j = 0; j < cartArticles.length; j++){
+        var productCart = cartArticles[j];
+        console.log('product',productCart)
+        totalPrice += productCart.price;
+        $(".car-Buy .cart-products").append(templateCartBuy(productCart, j));
+    }
+
+    $('.total-price').html('$' + totalPrice + 'MXN');
+}
+
+function templateCartBuy(productCart, j){
+var template= '<div class="col s12 center">'+
+        '<div class="col s4">'+
+            '<h6>'+productCart.name+'</h6>'+
+        '</div>'+
+        '<div class="col s4">'+
+            '<h6>'+productCart.price+'</h6>'+
+        '</div>'
+        '<div class="col s4">'+
+            '<button class="btn j="'+j+'"">Eliminar</button>'+
+        +'</div>'+
+    '</div>'
+    return template;
+}
+function articlesBuyCartArray(){
+    if(window.localStorage.proyectECommercePrinces){
+        return JSON.parse(window.localStorage.proyectECommercePrinces);
+    } else {
+        return [];
+    }
+    
+}
+
+
+});//cierra la funcion Ready
+
 
 //BOTON PARA PAGAR CON PAYPAL
 paypal.Button.render({
@@ -355,6 +452,12 @@ paypal.Button.render({
         }]
       });
     },
+    style: {
+         color: 'blue',
+         shape: 'pill',
+         tagline: 'true',
+         size: 'large'
+     },
     onAuthorize: function (data, actions) {
       return actions.payment.execute()
         .then(function () {

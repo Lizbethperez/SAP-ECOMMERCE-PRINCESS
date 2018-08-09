@@ -4,6 +4,19 @@ body{
     padding: 0;
 }
 /*FORMATOS PARA LA BARRA DE NAVEGACION*/
+#gif-cart{
+    width: 35%;
+    margin-bottom: 20px;
+}
+
+#paypal-button{
+    padding: 1em;
+    margin-top: 20px;
+}
+
+.template-carrito{
+    margin-bottom: 15px;
+}
 nav{
 color: #e053ed;
 background-image: url("../assets/background4.jpg");
