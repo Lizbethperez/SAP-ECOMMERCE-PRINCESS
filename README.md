@@ -1,7 +1,7 @@
-# PRODUCTO FINAL SPRINT 5
+# single Page App (SPA) Multi-usuario Consumiendo Data Remota 
 
 
-* **ELABORADO POR** _Lizbeth Pérez. Karla Martínez_ 
+* **ELABORADO POR** _Lizbeth Pérez Virgen
 * **Curso:** _JS DEEP DIVE: SINGLE PAGE APP(SPA)-MULTIUSUARIO CONSUMIENDO DATA REMOTA 
 * **Unidad:** _Producto final_ Sprint 5
 

@@ -112,8 +112,6 @@ $(document).on('click', '.btn-more', function(event){
  $('#product-single-description').empty();
   var singleIdProducts=$(this).attr('id-jewelry');
   window.location.hash = 'singleArticles/' + singleIdProducts;
-       console.log(singleIdProducts);
-     // ajaxSingleProducts(singleIdProducts)
 });
 
 /*FUNCION PARA VER LA DESCRIPCION PARTICULAR DE CADA FOTO DE ARETES*/
@@ -170,7 +168,6 @@ function ajaxSingleProducts(idEarrings) {
 
 //FUNCION PARA OBTENER LA INFORMACION DE UN ARTICULO EN PARTICULAR
 function descriptionSingleProducts(data){
-  console.log(data);
   var articleDescription= data.title;
   var articlePrice= data.price;
   var articlePictures=data.pictures;
@@ -179,7 +176,6 @@ function descriptionSingleProducts(data){
   for(j=0;j<3;j++){
      picturesArray.push(articlePictures[j]);
   }
-  console.log(picturesArray);
   var imageSmallOne=picturesArray[0].url;
   var imageSmallTwo=picturesArray[1].url;
   var imageSmallThree=picturesArray[2].url;
@@ -372,7 +368,7 @@ $(document).on('click', '#deleteArticle', function(e){
 
     //Cada articulo agregado se guarda en el array
     articlesCarBuy.push(articlesAdd);
-    window.localStorage.proyectECommercePrinces = JSON.stringify(articlesCarBuy);//se hace en string
+    window.localStorage.proyectECommercePrinces = JSON.stringify(articlesCarBuy);
 
 }
 
@@ -380,7 +376,6 @@ $(document).on('click', '#deleteArticle', function(e){
 function deletedArticleCart(j){
        if(window.localStorage.proyectECommercePrinces){
            console.log('existe!');
-           //Si ya hay datos en el localStorage se meten en la variable para ralizar un array de objetos
            var allArticlesCart = JSON.parse(window.localStorage.proyectECommercePrinces);
            allArticlesCart .splice(j, 1);
            window.localStorage.proyectECommercePrinces=JSON.stringify(allArticlesCart);
