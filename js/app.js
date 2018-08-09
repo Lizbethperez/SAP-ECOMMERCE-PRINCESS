@@ -54,7 +54,8 @@
     var instances = M.Modal.init(elems);
   });
 
-$(document).ready(function(){
+$(document).ready(function(paypal){
+    //console.log(paypal);
     $(".dropdown-trigger").dropdown();
     $('.collapsible').collapsible();
     $('.carousel.carousel-slider').carousel({
@@ -329,13 +330,37 @@ function pageAllArticules(option){
       console.log('renderErrorPage');
 
   }
- //BOTON PARA PAGAR CON PAYPAL
 
 
- 
   //SE EJECUTARA CUNADO SE TENGA UN BOTON DE REGRESAR. 
   /*$(document).on('click', '#go-back', function(){
       window.location.href='';
   })*/
 
 });
+
+//BOTON PARA PAGAR CON PAYPAL
+paypal.Button.render({
+    env: 'sandbox',
+    client: {
+      sandbox: 'demo_sandbox_client_id'
+    },
+    payment: function (data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '20,000.00',
+            currency: 'MXN'
+          }
+        }]
+      });
+    },
+    onAuthorize: function (data, actions) {
+      return actions.payment.execute()
+        .then(function () {
+          window.alert('Thank you for your purchase!');
+        });
+    }
+   }, '#paypal-button');
+
+
