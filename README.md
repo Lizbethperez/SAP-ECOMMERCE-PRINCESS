@@ -8,7 +8,9 @@ Princess es una Aplicación Web de comercio Electrónico bajo los principios de 
 ##  Elaborado para
 LABORATORIA
 
-* **ELABORADO POR** _Lizbeth Pérez Virgen
+
+
+* **DESARROLLADO POR** _Lizbeth Pérez Virgen
 * **Curso:** _JS DEEP DIVE: SINGLE PAGE APP(SPA)-MULTIUSUARIO CONSUMIENDO DATA REMOTA 
 * **Unidad:** _Producto final_ Sprint 5
 
