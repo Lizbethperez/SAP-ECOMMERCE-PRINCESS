@@ -1,4 +1,4 @@
-# single Page App (SPA) Multi-usuario Consumiendo Data Remota 
+# single Page App (SPA) ECOMMERCE PRINCESS
 
 
 * **ELABORADO POR** _Lizbeth Pérez Virgen
