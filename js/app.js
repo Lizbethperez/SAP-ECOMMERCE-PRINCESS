@@ -431,13 +431,13 @@ function articlesBuyCartArray(){
 paypal.Button.render({
     env: 'sandbox',
     client: {
-      sandbox: 'demo_sandbox_client_id'
+      sandbox: 'AVcnmcCHrd1ZjkpxuZAlt8b8QBRNPt_MCdOqI4UuK00KNAgCoFvs7GsTpGGX8T_uZydeNVd6EPHW1If4'
     },
     payment: function (data, actions) {
       return actions.payment.create({
         transactions: [{
           amount: {
-            total: '20,000.00',
+            total: '5000.00',
             currency: 'MXN'
           }
         }]

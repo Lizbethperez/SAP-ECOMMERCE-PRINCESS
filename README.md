@@ -4,10 +4,7 @@ Princess es una Aplicación Web de comercio Electrónico bajo los principios de 
 
 ![princess-preview](https://user-images.githubusercontent.com/37425706/44370779-4b9bed00-a4a1-11e8-926a-1883f709b623.png)
 
-##  Elaborado para
-LABORATORIA
-
-
+## Desarrollado para [Laboratoria](http://laboratoria.la)
 
 * **DESARROLLADO POR** _Lizbeth Pérez Virgen
 * **Curso:** _JS DEEP DIVE: SINGLE PAGE APP(SPA)-MULTIUSUARIO CONSUMIENDO DATA REMOTA 
